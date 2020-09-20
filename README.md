@@ -22,3 +22,4 @@
     return (class)
   }
 ```
+https://github.com/deviati0n/ML1/issues/1#issue-705128106
