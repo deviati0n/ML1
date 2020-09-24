@@ -61,14 +61,13 @@ LOO <- function(xl, alg = KNN ){
                 MLOO[k][1] <-  MLOO[k][1] + (1/l)
             }
         }
-
     }
-
     return(MLOO)
 }
 ```
-#### Работа алогоритма LOO для выборки из 30 элементов ####
-<img src="https://user-images.githubusercontent.com/71149650/94152693-893f8100-fe84-11ea-8c11-025997056a6f.png" alt="LOO для выборки из 30 элементов" />
-#### Работа алогоритма LOO для полной выборки ####
+#### Работа LOO для выборки из 30 элементов ####
+<img src="https://user-images.githubusercontent.com/71149650/94165933-6cf71080-fe93-11ea-8914-6bd689c58458.png" alt="LOO для выборки из 30 элементов" />
+
+#### Работа LOO для полной выборки ####
 <img src="https://user-images.githubusercontent.com/71149650/94165424-de828f00-fe92-11ea-873e-390d64df1122.png" alt="LOO для полной выборки" />
 
