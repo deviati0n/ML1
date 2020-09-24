@@ -40,7 +40,7 @@ KNN <- function(z, xl, k){
     return (class)
 }
 ```
-#### Карта классифкации ирисов Фишера для 4NN ####
+#### Карта классификации ирисов Фишера для 4NN ####
 <img src="https://user-images.githubusercontent.com/71149650/94147378-e126b980-fe7d-11ea-9cf1-3db0bccaebf9.png" alt="Карта классифкации для 4NN" width="550"/>
 
 ### Реализация скользящего контроля LOO ###
