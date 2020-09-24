@@ -54,9 +54,10 @@ LOO <- function(xl, alg = KNN ){
     for (i in 1:l){
         point <- c(xl[i,1:2])
         new_iris <- xl[-i,]
-
+        ordXl <- sortByDist( point, new_iris )
+      
         for (k in 1:(l - 1)){
-            if( alg(point,  new_iris, k ) != xl[i, 3] ){
+            if( alg(point, ordXl, k ) != xl[i, 3] ){
                 MLOO[k][1] <-  MLOO[k][1] + (1/l)
             }
         }
@@ -68,5 +69,6 @@ LOO <- function(xl, alg = KNN ){
 ```
 #### Работа алогоритма LOO для выборки из 30 элементов ####
 <img src="https://user-images.githubusercontent.com/71149650/94152693-893f8100-fe84-11ea-8c11-025997056a6f.png" alt="LOO для выборки из 30 элементов" />
-
+#### Работа алогоритма LOO для полной выборки ####
+<img src="https://user-images.githubusercontent.com/71149650/94165424-de828f00-fe92-11ea-873e-390d64df1122.png" alt="LOO для полной выборки" />
 
