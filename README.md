@@ -22,4 +22,4 @@
     return (class)
   }
 ```
-![1nn](https://user-images.githubusercontent.com/71149650/93714751-656ef900-fb6d-11ea-9c56-fb2461cbbf96.png)
+![1nn](https://user-images.githubusercontent.com/71149650/94142517-154aac00-fe77-11ea-8fdf-1196cb69e5d8.png)
