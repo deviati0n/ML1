@@ -68,6 +68,6 @@ LOO <- function(xl, alg = KNN ){
 #### Работа LOO для выборки из 30 элементов ####
 <img src="https://user-images.githubusercontent.com/71149650/94165933-6cf71080-fe93-11ea-8914-6bd689c58458.png" alt="LOO для выборки из 30 элементов" />
 
-#### Работа LOO для полной выборки ####
-<img src="https://user-images.githubusercontent.com/71149650/94165424-de828f00-fe92-11ea-873e-390d64df1122.png" alt="LOO для полной выборки" />
+#### Работа LOO для полной выборки и карта классификаци для 6NN ####
+<img src="https://user-images.githubusercontent.com/71149650/94172577-56ed4e00-fe9b-11ea-8ef1-082e1b5da603.jpg" alt="LOO для полной выборки" />
 
