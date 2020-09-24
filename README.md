@@ -50,10 +50,13 @@ LOO <- function(xl, alg = KNN ){
     # Инициализация вектора для LOO
     MLOO <- matrix(0, dim(xl)[1] - 1, 1)
     l <- dim(xl)[1]
-
+    
     for (i in 1:l){
+        # Берем точку из выборки и переопределяем выборку
         point <- c(xl[i,1:2])
         new_iris <- xl[-i,]
+        
+        # Сортируем выборку
         ordXl <- sortByDist( point, new_iris )
       
         for (k in 1:(l - 1)){
