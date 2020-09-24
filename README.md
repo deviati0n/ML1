@@ -23,3 +23,24 @@
   }
 ```
 <img src="https://user-images.githubusercontent.com/71149650/94142517-154aac00-fe77-11ea-8fdf-1196cb69e5d8.png" alt="1NN" width="550"/>
+
+### Реализация метода k ближайших соседей ###
+``` r
+## Вызов функции KNN 
+  
+## Параметрами функции являются входной объект,выборка и кол-во соседей для проверки
+KNN <- function(z, xl, k){
+    ## Сортировка выборки по входному объекту
+    ordXl <- sortByDist( z, xl )
+    n <- dim(ordXl)[2] - 1
+
+    ## Выбор k ближайших классов
+    classes <- ordXl[1:k, n + 1]
+    counts <- table(classes)
+    
+    ## Поиск класса с максимальным кол-вом вхождений
+    class <- names(which.max(counts))
+
+    return (class)
+}
+```
