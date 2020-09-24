@@ -66,4 +66,7 @@ LOO <- function(xl, alg = KNN ){
     return(MLOO)
 }
 ```
+#### Работа алогоритма LOO для выборки из 30 элементов ####
+<img src="https://user-images.githubusercontent.com/71149650/94152693-893f8100-fe84-11ea-8c11-025997056a6f.png" alt="LOO для выборки из 30 элементов" />
+
 
