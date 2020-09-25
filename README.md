@@ -26,6 +26,7 @@
 ``` r
 ## Параметрами функции являются входной объект,выборка и кол-во соседей для проверки
 KNN <- function(z, xl, k){
+
     ## Сортировка выборки по входному объекту
     ordXl <- sortByDist( z, xl )
     n <- dim(ordXl)[2] - 1
@@ -47,6 +48,7 @@ KNN <- function(z, xl, k){
 ``` r
 # Параметры: выборка и метод, который используют для классификации
 LOO <- function(xl, alg = KNN ){
+
     # Инициализация вектора для LOO
     MLOO <- matrix(0, dim(xl)[1] - 1, 1)
     l <- dim(xl)[1]
@@ -58,7 +60,7 @@ LOO <- function(xl, alg = KNN ){
         
         # Сортируем выборку
         ordXl <- sortByDist( point, new_iris )
-      
+        
         for (k in 1:(l - 1)){
             if( alg(point, ordXl, k ) != xl[i, 3] ){
                 MLOO[k][1] <-  MLOO[k][1] + (1/l)
