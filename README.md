@@ -62,11 +62,14 @@ LOO <- function(xl, alg = KNN ){
         ordXl <- sortByDist( point, new_iris )
         
         for (k in 1:(l - 1)){
+            # Сравнение работы алогоритма и исключенной точки
             if( alg(point, ordXl, k ) != xl[i, 3] ){
+                # Если алгоритм ошибся, то штрафуем его
                 MLOO[k][1] <-  MLOO[k][1] + (1/l)
             }
         }
     }
+    # Выбираем оптимальный k
     min <- which.min(MLOO)
     return(min)
 }
