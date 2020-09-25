@@ -13,6 +13,7 @@
 + [1NN](https://github.com/deviati0n/ML1/tree/master/SBS/1NN)
 + [KNN](https://github.com/deviati0n/ML1/tree/master/SBS/KNN)
 + [KWNN](https://github.com/deviati0n/ML1/tree/master/SBS/KWNN)
++ [LOO](https://github.com/deviati0n/ML1/tree/master/SBS/LOO)
 
 
 
