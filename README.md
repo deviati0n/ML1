@@ -26,6 +26,8 @@
     return (class)
   }
 ```
+`
+#### Работа 1NN на выборке ирисов Фишера ####
 <img src="https://user-images.githubusercontent.com/71149650/94142517-154aac00-fe77-11ea-8fdf-1196cb69e5d8.png" alt="1NN" width="550"/>
 
 ### Реализация метода k ближайших соседей ###
@@ -62,10 +64,10 @@ LOO <- function(xl, alg = KNN ){
     for (i in 1:l){
         # Берем точку из выборки и переопределяем выборку
         point <- c(xl[i,1:2])
-        new_iris <- xl[-i,]
+        newXl <- xl[-i,]
         
         # Сортируем выборку
-        ordXl <- sortByDist( point, new_iris )
+        ordXl <- sortByDist( point, newXl )
         
         for (k in 1:(l - 1)){
             # Сравнение работы алогоритма и класса исключенной точки
