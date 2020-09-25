@@ -65,7 +65,8 @@ LOO <- function(xl, alg = KNN ){
             }
         }
     }
-    return(MLOO)
+    min <- which.min(MLOO)
+    return(min)
 }
 ```
 #### Работа LOO для выборки из 30 случайных элементов ####
