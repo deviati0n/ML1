@@ -29,8 +29,5 @@ LOO <- function(xl, alg = KNN ){
     return(min)
 }
 ```
-#### Работа LOO для выборки из 30 случайных элементов ####
-<img src="https://user-images.githubusercontent.com/71149650/94165933-6cf71080-fe93-11ea-8914-6bd689c58458.png" alt="LOO для выборки из 30 случайных элементов" />
 
-#### Работа LOO для полной выборки и карта классификаци для 6NN ####
-<img src="https://user-images.githubusercontent.com/71149650/94172577-56ed4e00-fe9b-11ea-8ef1-082e1b5da603.jpg" alt="LOO для полной выборки" />
+<img src="https://user-images.githubusercontent.com/71149650/94484221-bf626500-01e4-11eb-87f9-24c663d2970b.png" alt="LOO для полной выборки" />
