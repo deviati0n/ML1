@@ -20,5 +20,4 @@ KNN <- function(z, xl, k){
     return (class)
 }
 ```
-#### Карта классификации ирисов Фишера для 4NN ####
-<img src="https://user-images.githubusercontent.com/71149650/94147378-e126b980-fe7d-11ea-9cf1-3db0bccaebf9.png" alt="Карта классифкации для 4NN" width="550"/>
+<img src="https://user-images.githubusercontent.com/71149650/94458268-6384e580-01be-11eb-8eb7-48b76bade767.png" alt="Карта классифкации для 4NN" width="550"/>
