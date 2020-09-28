@@ -16,4 +16,4 @@
   }
 ```
 ### Работа 1NN на выборке ирисов Фишера ###
-<img src="https://user-images.githubusercontent.com/71149650/94455536-db054580-01bb-11eb-96c2-1f9a80385dc6.png" alt="1NN" width="550"/>
+<img src="https://user-images.githubusercontent.com/71149650/94456760-52d37000-01bc-11eb-82e0-c286f933c238.png" alt="1NN" width="550"/>
