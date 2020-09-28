@@ -15,5 +15,4 @@
     return (class)
   }
 ```
-### Работа 1NN на выборке ирисов Фишера ###
 <img src="https://user-images.githubusercontent.com/71149650/94456760-52d37000-01bc-11eb-82e0-c286f933c238.png" alt="1NN" width="550"/>
