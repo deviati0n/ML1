@@ -100,12 +100,12 @@ LOO <- function(xl, alg = KWNN ){
     </tr>
     <tr>
         <td>KNN</td>
-        <td>K = 6</td>
+        <td>k = 6</td>
         <td>0.034</td>
     </tr>
     <tr>
         <td>KWNN</td>
-        <td>K = 48, Q = 0.95</td>
+        <td>k = 48, q = 0.95</td>
         <td>0.040</td>
     </tr>
 </table>
