@@ -87,25 +87,25 @@ LOO <- function(xl, alg = KWNN ){
 ```
 ## Сравнительная таблица ##
 
-<table style="width:100%">
+<table >
     <tr>
-        <td>метод</td>
-        <td>параметры</td>
-        <td>loo</td>
+        <td>Метрический метод</td>
+        <td>Параметры</td>
+        <td>Значение LOO</td>
     </tr>
     <tr>
-        <td>1nn</td>
-        <td>11</td>
-        <td>11</td>
+        <td>1NN</td>
+        <td> - </td>
+        <td>0.046</td>
     </tr>
     <tr>
-        <td>knn</td>
-        <td>k = 6</td>
-        <td>11</td>
+        <td>KNN</td>
+        <td>K = 6</td>
+        <td>0.034</td>
     </tr>
     <tr>
-        <td>kwnn</td>
-        <td>k = 48, q = 0.95</td>
-        <td>11</td>
+        <td>KWNN</td>
+        <td>K = 48, Q = 0.95</td>
+        <td>0.040</td>
     </tr>
 </table>
