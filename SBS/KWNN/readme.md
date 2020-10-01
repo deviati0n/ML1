@@ -13,14 +13,13 @@
     
     ## Выбор k ближайших объектов
     classes <- ordXl[1:k, n ]
-    counters <- matrix(0, 3, 1)
+    counters <- table(classes)
+    counters[1:length(counters)] <- 0 
     
     ## Вычисление вклада i-го соседа при классификации объекта z
     for (i in 1:k) {
       counters[classes[i]] <- counters[classes[i]] + q^i
     }
-
-    names(counters) <- c("setosa", "versicolor", "virginica")
     
     ## Функция возвращает имя класса
     return(names(which.max(counters)))
