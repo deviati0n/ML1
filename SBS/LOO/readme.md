@@ -45,12 +45,11 @@ LOO <- function(xl, alg = KWNN ){
   l <- dim(xl)[1]
   
   # Определяем рамки для поиска значения весовой функции
-  r1 <- 0.05
-  r2 <- 0.95
-  step <- r2/r1
+  r1 <- 0.02
+  r2 <- 0.98
   
   # Инициализация матрицы для LOO
-    MLOO <- matrix(0, l , step + 1)
+    MLOO <- matrix(0, l , r2 / r1 )
 
     for (i in 1:l) {
         # Берем точку из выборки и переопределяем выборку
@@ -105,7 +104,7 @@ LOO <- function(xl, alg = KWNN ){
     </tr>
     <tr>
         <td>KWNN</td>
-        <td>k = 48, q = 0.95</td>
-        <td>0.040</td>
+        <td>k = 30, q = 0.96</td>
+        <td>0.033</td>
     </tr>
 </table>
