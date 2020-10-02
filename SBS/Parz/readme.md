@@ -27,3 +27,4 @@ Parz <- function(z, xl, h, kern = Kernel){
   return(4)
 }
 ```
+<img src = "https://user-images.githubusercontent.com/71149650/94863884-d226a500-0443-11eb-8ec6-e2029c14cb32.png width = "550"/>
