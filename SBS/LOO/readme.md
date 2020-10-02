@@ -49,7 +49,7 @@ LOO <- function(xl, alg = KWNN ){
   r2 <- 0.98
   
   # Инициализация матрицы для LOO
-    MLOO <- matrix(0, l , r2 / r1 )
+    MLOO <- matrix(0, l - 1, r2 / r1 )
 
     for (i in 1:l) {
         # Берем точку из выборки и переопределяем выборку
@@ -60,7 +60,7 @@ LOO <- function(xl, alg = KWNN ){
         ordXl <- sortByDist( point, new_iris )
         
         # Цикл по k
-        for (k in 1:l) {
+        for (k in 1:(l - 1)) {
               j <- 1
               # Цикл по q
               for (q in seq(r1, r2, r1 ) ) {
@@ -77,8 +77,8 @@ LOO <- function(xl, alg = KWNN ){
     
     }
     # Находим минимальное значение в матрице(столбец и строку минимального значения)
-    q <- which.min(MLOO) %/% (dim(xl)[1]) + 1
-    k <- which.min(MLOO) %% (dim(xl)[1] )
+    q <- which.min(MLOO) %/% (dim(xl)[1] - 1) + 1
+    k <- which.min(MLOO) %% (dim(xl)[1] - 1)
    
     # Возвращаем найденные оптимальные параметры 
     return(c(q, k))
@@ -105,6 +105,8 @@ LOO <- function(xl, alg = KWNN ){
     <tr>
         <td>KWNN</td>
         <td>k = 30, q = 0.96</td>
-        <td>0.033</td>
+        <td>0.034</td>
     </tr>
 </table>
+
+
