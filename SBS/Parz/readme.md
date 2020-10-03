@@ -40,10 +40,10 @@ Parz <- function(z, xl, h, kern = Kernel){
 ```
 
 ### Прямоугольное ядро ###
-<img src = "https://user-images.githubusercontent.com/71149650/94997426-aaeee580-05b3-11eb-82eb-f0276621e019.png" width = "550"/>
+<img src = "https://user-images.githubusercontent.com/71149650/94997426-aaeee580-05b3-11eb-82eb-f0276621e019.png" width = "1000"/>
 
 ### Треугольное ядро ###
-<img src = "https://user-images.githubusercontent.com/71149650/94997729-adead580-05b5-11eb-9cce-84e08d22e8be.png" width = "550"/>
+<img src = "https://user-images.githubusercontent.com/71149650/94997729-adead580-05b5-11eb-9cce-84e08d22e8be.png" width = "1000"/>
 
 
 
