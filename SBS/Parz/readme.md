@@ -52,5 +52,8 @@ Parz <- function(z, xl, h, kern = Kernel){
 ### Треугольное ядро ###
 <img src = "https://user-images.githubusercontent.com/71149650/94997729-adead580-05b5-11eb-9cce-84e08d22e8be.png" width = "1000"/>
 
+### Гауссовское ядро ###
+<img src="https://user-images.githubusercontent.com/71149650/95022762-e3f58b80-0681-11eb-93f6-f3a3bdf0865c.png" />
+
 
 
