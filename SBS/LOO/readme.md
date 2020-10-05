@@ -91,6 +91,9 @@ LOO <- function(xl, alg = KWNN ){
     return(c(q, k))
 }  
 ```
+
+<img src="https://user-images.githubusercontent.com/71149650/95069842-f3231a80-070f-11eb-9f37-02aafa9f8b83.png" />
+
 ### Реализация скользящего контроля LOO для парзеновского окна ###
 В данной функции идет поиск оптимального **h** - радиус окна.
 
