@@ -47,10 +47,18 @@ Parz <- function(z, xl, h, kern = Kernel){
 ```
 
 ### Прямоугольное ядро ###
-<img src = "https://user-images.githubusercontent.com/71149650/94997426-aaeee580-05b3-11eb-82eb-f0276621e019.png" width = "1000"/>
+<img src = "https://user-images.githubusercontent.com/71149650/95464618-d6424d80-0982-11eb-9d0f-6a462bfd685d.png" />
 
 ### Треугольное ядро ###
-<img src = "https://user-images.githubusercontent.com/71149650/94997729-adead580-05b5-11eb-9cce-84e08d22e8be.png" width = "1000"/>
+<img src = "https://user-images.githubusercontent.com/71149650/95464919-30dba980-0983-11eb-99f3-f7232841a65d.png" />
+
+
+### Ядро Епанечникова ###
+<img src = "https://user-images.githubusercontent.com/71149650/95465185-79936280-0983-11eb-8877-bac88a4e5a7c.png" />
+
+
+### Квартическое ядро ###
+<img src = "https://user-images.githubusercontent.com/71149650/95465365-b7908680-0983-11eb-873a-c4a2408f6d4a.png" />
 
 ### Гауссовское ядро ###
 <img src="https://user-images.githubusercontent.com/71149650/95022762-e3f58b80-0681-11eb-93f6-f3a3bdf0865c.png" />
