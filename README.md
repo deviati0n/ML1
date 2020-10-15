@@ -201,12 +201,74 @@ Parz <- function(z, xl, h, kern = Kernel){
 
 ## Метод потенциальных функций ##
 
+Метод схож с парзеновским окном, при этом у каждой точки выборки будет свой потенциал. Этот потенциал
+
+``` r
+Potenc <- function(xl, miss, alg = Parz) {
+    l <- dim(xl)[1]
+    y <- matrix(0, l, 1)
+    h <- 0.4
+    err <- miss + 1
+    
+    dist <- matrix(NA, l, l)
+    for (i in 1:l) {
+      
+      for (j in 1:l) {
+        
+        dist[i, j] <- euDist(xl[i, 1:2], xl[j, 1:2])
+        
+      }
+      
+    }
+    
+    while (err > miss) {
+      
+      err <- 0
+      for (i in 1:l) {
+        dist2 <- cbind(dist[,i], iris[, 3:5])
+        dist2 <- dist2[-i,]
+        point <- c(xl[i, 1:2])
+        
+        
+        if (alg(point, dist2, h, y) != xl[i, 3] && y[i] < 6) {
+          y[i] <- y[i] + 1
+          err <- err + 1
+        }
+        
+      }
+
+      print(err)
+      
+    }
+    
+    return(y)
+}
+```
+
+### Прямоугольное ядро ###
+<img src = "https://user-images.githubusercontent.com/71149650/96151533-2c2f6c00-0f14-11eb-872c-9193db5ee23b.png" />
+
+### Ядро Епанечникова ###
+<img src = "https://user-images.githubusercontent.com/71149650/96151289-ebcfee00-0f13-11eb-9508-e9e52a64098a.png" />
+
+### Квартическое ядро ###
+<img src = "https://user-images.githubusercontent.com/71149650/96151403-0dc97080-0f14-11eb-895c-20dd39f31aa8.png" />
+
+**Достоинства**
++ Простота реализации
++ Не требуется сортировка выборки
++ При правильном подборе h и y будет хорошее качество классификации
++ Большое кол-во параметров, которые можно настраивать 
+
+**Недостатки**
++ Если входной объект не попадет в окно с радиусом h, то его не возможно будет проклассифицировать (не используя гауссовское ядро).
++ Требуется хранить полную выборку
 
 ## Скользящий контроль LOO ##
 
 Данная процедура помогает найти оптимальное значение параметров **k** (KNN, KWNN) и **q** (весовая функция для KWNN). Для каждого объекта из выборки проверяется, правильно ли он классифицируется по своим k ближайшим соседям (k = [1; l], q = (0; 1)).
 
-### Реализация скользящего контроля LOO для KNN ###
+### Реализация скользящего контроля LOO для [KNN](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-k-%D0%B1%D0%BB%D0%B8%D0%B6%D0%B0%D0%B9%D1%88%D0%B8%D1%85-%D1%81%D0%BE%D1%81%D0%B5%D0%B4%D0%B5%D0%B9-knn) ###
 ``` r
 # Параметры: выборка и метод, который используют для классификации
 LOO <- function(xl, alg = KNN ){
@@ -240,7 +302,7 @@ LOO <- function(xl, alg = KNN ){
 
 <img src="https://user-images.githubusercontent.com/71149650/94484221-bf626500-01e4-11eb-87f9-24c663d2970b.png" alt="LOO для полной выборки" />
 
-### Реализация скользящего контроля LOO для KWNN ###
+### Реализация скользящего контроля LOO для [KWNN](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-k-%D0%B2%D0%B7%D0%B2%D0%B5%D1%88%D0%B5%D0%BD%D0%BD%D1%8B%D1%85-%D0%B1%D0%BB%D0%B8%D0%B6%D0%B0%D0%B9%D1%88%D0%B8%D1%85-%D1%81%D0%BE%D1%81%D0%B5%D0%B4%D0%B5%D0%B9-kwnn) ###
 В данной функции идет поиск оптимального **k** и **q** одновременно.
 
 ``` r
@@ -298,7 +360,7 @@ LOO <- function(xl, alg = KWNN ){
 
 <img src="https://user-images.githubusercontent.com/71149650/95449907-1945f600-096e-11eb-9310-ea6a8523d001.png" />
 
-### Реализация скользящего контроля LOO для парзеновского окна ###
+### Реализация скользящего контроля LOO для [парзеновское окно](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-%D0%BF%D0%B0%D1%80%D0%B7%D0%B5%D0%BD%D0%BE%D0%B2%D1%81%D0%BA%D0%BE%D0%B3%D0%BE-%D0%BE%D0%BA%D0%BD%D0%B0) ###
 В данной функции идет поиск оптимального **h** - радиус окна.
 
 ``` r
