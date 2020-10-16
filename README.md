@@ -456,7 +456,7 @@ LOO <- function(xl, alg = Parz){
     </tr>
     <tr>
         <td>Треугольное ядро, h = 0.4</td>
-        <td>0.0</td>
+        <td>0.07</td>
     </tr>
     <tr>
         <td>Ядро Епанечникова, h = 0.4</td>
@@ -464,11 +464,11 @@ LOO <- function(xl, alg = Parz){
     </tr>
     <tr>
         <td>Квартическое ядро, h = 0.4</td>
-        <td>0.006</td>
+        <td>0.07</td>
     </tr>
     <tr>
         <td>Гауссовское ядро, h = 0.1</td>
-        <td>0.026</td>
+        <td>0.03</td>
     </tr>
     
 </table>
