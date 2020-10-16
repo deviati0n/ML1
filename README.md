@@ -238,6 +238,19 @@ Potenc <- function(xl, miss, alg = Parz) {
         # Если алгоритм ошибся - усиливаем силу потенциала точки выборки
         if (alg(point, dist2, h, y) != xl[i, 3] && y[i] < 6) {
           y[i] <- y[i] + 1
+        }
+        
+      }
+      
+      for (i in 1:l) {
+      
+        # Добавляем к матрице выборки столбец расстояний 
+        dist2 <- cbind(dist[,i], iris[, 3:5])
+        dist2 <- dist2[-i,]
+        point <- c(xl[i, 1:2])
+        
+        # Если алгоритм ошибся - штрафуем его
+        if (alg(point, dist2, h, y) != xl[i, 3]) {
           err <- err + 1
         }
         
