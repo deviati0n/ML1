@@ -253,10 +253,10 @@ Potenc <- function(xl, miss, alg = Parz) {
 ```
 
 ### Прямоугольное ядро ###
-<img src = "https://user-images.githubusercontent.com/71149650/96151533-2c2f6c00-0f14-11eb-872c-9193db5ee23b.png" />
+<img src = "https://user-images.githubusercontent.com/71149650/96218179-e6fb5080-0f8c-11eb-8828-8d97058ab95f.png />
 
 ### Ядро Епанечникова ###
-<img src = "https://user-images.githubusercontent.com/71149650/96151289-ebcfee00-0f13-11eb-9508-e9e52a64098a.png" />
+<img src = "https://user-images.githubusercontent.com/71149650/96218188-ecf13180-0f8c-11eb-8e7d-a770cf4c052b.png" />
 
 ### Квартическое ядро ###
 <img src = "https://user-images.githubusercontent.com/71149650/96151403-0dc97080-0f14-11eb-895c-20dd39f31aa8.png" />
@@ -452,15 +452,15 @@ LOO <- function(xl, alg = Parz){
     </tr>
   <td rowspan = "5">Потенциальные функции</td>
         <td>Прямоугольное ядро, h = 0.4</td>
-        <td>0.006</td>
+        <td>0.067</td>
     </tr>
     <tr>
         <td>Треугольное ядро, h = 0.4</td>
-        <td>0.006</td>
+        <td>0.0</td>
     </tr>
     <tr>
         <td>Ядро Епанечникова, h = 0.4</td>
-        <td>0.02</td>
+        <td>0.07</td>
     </tr>
     <tr>
         <td>Квартическое ядро, h = 0.4</td>
