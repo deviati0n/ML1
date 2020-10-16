@@ -253,7 +253,7 @@ Potenc <- function(xl, miss, alg = Parz) {
 ```
 
 ### Прямоугольное ядро ###
-<img src = "https://user-images.githubusercontent.com/71149650/96218179-e6fb5080-0f8c-11eb-8828-8d97058ab95f.png />
+<img src = "https://user-images.githubusercontent.com/71149650/96218179-e6fb5080-0f8c-11eb-8828-8d97058ab95f.png" />
 
 ### Ядро Епанечникова ###
 <img src = "https://user-images.githubusercontent.com/71149650/96218188-ecf13180-0f8c-11eb-8e7d-a770cf4c052b.png" />
