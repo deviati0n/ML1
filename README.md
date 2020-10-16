@@ -468,7 +468,7 @@ LOO <- function(xl, alg = Parz){
     </tr>
     <tr>
         <td>Гауссовское ядро, h = 0.1</td>
-        <td>0.034</td>
+        <td>0.04</td>
     </tr>
     
 </table>
