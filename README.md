@@ -324,6 +324,7 @@ marginF <- function(point, xl, k){
 
 **Алгоритм STOLP** разбивает обучающие объеты выборки на три категории: шумовые, неинформативные и эталонные. Таким образом, алгоритм производит сжатие выборки.
 
+### Реализация алгоритма STOLP ###
 ``` r
 # Параметры: выборка, порог фильтрации выборки, допустимая доля ошибок, метрический алгоритм и функция отступа
 stolpF <- function(xl, delta, miss, algK = KNN, algM = marginF ) {
@@ -409,6 +410,27 @@ stolpF <- function(xl, delta, miss, algK = KNN, algM = marginF ) {
 
 <img src = "https://user-images.githubusercontent.com/71149650/96970068-cf3b4380-151b-11eb-90b7-fbf9a11437f5.png" />
 
+<table>
+    <tr>
+        <td>Метрический метод</td>
+        <td>Параметры</td>
+        <td>Значение LOO</td>
+        <td>Время работы / сек </td>
+    </tr>
+    <tr>
+        <td>KNN</td>
+        <td> 1 </td>
+        <td>0.034</td>
+        <td>10.088</td>
+    </tr>
+    <tr>
+        <td>KNN + STOLP</td>
+        <td>k = 1</td>
+        <td>0.034</td>
+        <td>0.308</td>
+    </tr>
+ </table>
+ 
 
 ## Скользящий контроль LOO ##
 
