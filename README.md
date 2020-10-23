@@ -419,7 +419,7 @@ stolpF <- function(xl, delta, miss, algK = KNN, algM = marginF ) {
     </tr>
     <tr>
         <td>KNN</td>
-        <td> 1 </td>
+        <td> k = 1 </td>
         <td>0.034</td>
         <td>10.088</td>
     </tr>
