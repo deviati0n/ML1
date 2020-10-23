@@ -359,6 +359,9 @@ stolpF <- function(xl, delta, miss, algK = KNN, algM = marginF ) {
   while (dim(xl)[1] > dim(omega)[1]) {
     rownames(xd) <- c(1:dim(xd)[1])
     
+    # Пресчитываем k
+    k <- LOO(xd, omega)
+    
     marg <- matrix(0, dim(xd)[1], 1)
     err <- 0
     
@@ -375,8 +378,7 @@ stolpF <- function(xl, delta, miss, algK = KNN, algM = marginF ) {
       
     } # for
     
-    print(paste("miss: ", err))
-      
+    # Определяем объекты, на которых алгоритм ошибается   
     E <- xd[which(marg < 0),]
     marg <- marg[which(marg < 0)]
     
@@ -384,11 +386,10 @@ stolpF <- function(xl, delta, miss, algK = KNN, algM = marginF ) {
       break
     }
 
-    
-    
+    # Добавляем в эталонные объект с минимальным отступом
     omega <- rbind(omega, E[which.min(marg),])
     omegaT <- as.numeric(rownames(E[which.min(marg),]))
-    
+   
     xd <- xd[-omegaT, ]
     
     print(omega)   
@@ -400,7 +401,13 @@ stolpF <- function(xl, delta, miss, algK = KNN, algM = marginF ) {
 }
 ```
 
+### Эталонные объекты выборки ирисов фишера ###
 
+<img src="https://user-images.githubusercontent.com/71149650/96968310-82566d80-1519-11eb-9621-5e9371749672.png" />
+
+### Карта классификации ирисов фишера по эталонным объектам ###
+
+<img src = "https://user-images.githubusercontent.com/71149650/96970068-cf3b4380-151b-11eb-90b7-fbf9a11437f5.png" />
 
 
 ## Скользящий контроль LOO ##
@@ -601,6 +608,11 @@ LOO <- function(xl, alg = Parz){
     <tr>
         <td>Гауссовское ядро, h = 0.1</td>
         <td>0.04</td>
+    </tr>
+    <tr>
+        <td>KNN  + STOLP</td>
+        <td>k = 1</td>
+        <td>0.034</td>
     </tr>
     
 </table>
