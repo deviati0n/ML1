@@ -25,40 +25,48 @@ KNN <- function(z, xl, k){
   counts <- table(classes)
   
   
-
+  
   class <- names(which.max(counts))
   return(class)
 }
 
-KWNN <- function(z, xl, k, q ){
+# ÐŸÐ°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ñ‹: Ð²Ñ‹Ð±Ð¾Ñ€ÐºÐ° Ð¸ Ð¼ÐµÑ‚Ð¾Ð´, ÐºÐ¾Ñ‚Ð¾Ñ€Ñ‹Ð¹ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÑŽÑ‚ Ð´Ð»Ñ ÐºÐ»Ð°ÑÑÐ¸Ñ„Ð¸ÐºÐ°Ñ†Ð¸Ð¸
+LOO <- function(xl, etalon, alg = KNN ){
   
-  n <- dim(xl)[2] 
+  # Ð˜Ð½Ð¸Ñ†Ð¸Ð°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ñ Ð²ÐµÐºÑ‚Ð¾Ñ€Ð° Ð´Ð»Ñ LOO
+  MLOO <- matrix(0, dim(xl)[1] - 1, 1)
+  l <- dim(xl)[1]
   
-  xl <- sortByDist(z, xl )
-  
-  classes <- xl[1:k, n ]
-  counters <- table(classes)
-  counters[1:length(counters)] <- 0
-  
-  
-  for (i in 1:k) {
-    counters[classes[i]] <- counters[classes[i]] + q^i
+  for (i in 1:l){
+    # Ð‘ÐµÑ€ÐµÐ¼ Ñ‚Ð¾Ñ‡ÐºÑƒ Ð¸Ð· Ð²Ñ‹Ð±Ð¾Ñ€ÐºÐ¸ Ð¸ Ð¿ÐµÑ€ÐµÐ¾Ð¿Ñ€ÐµÐ´ÐµÐ»ÑÐµÐ¼ Ð²Ñ‹Ð±Ð¾Ñ€ÐºÑƒ
+    point <- c(xl[i,1:2])
+
+    # Ð¡Ð¾Ñ€Ñ‚Ð¸Ñ€ÑƒÐµÐ¼ Ð²Ñ‹Ð±Ð¾Ñ€ÐºÑƒ
+    ordXl <- sortByDist( point, etalon )
+    
+    for (k in 1:(l - 1)){
+      # Ð¡Ñ€Ð°Ð²Ð½ÐµÐ½Ð¸Ðµ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ð°Ð»Ð¾Ð³Ð¾Ñ€Ð¸Ñ‚Ð¼Ð° Ð¸ ÐºÐ»Ð°ÑÑÐ° Ð¸ÑÐºÐ»ÑŽÑ‡ÐµÐ½Ð½Ð¾Ð¹ Ñ‚Ð¾Ñ‡ÐºÐ¸
+      if( alg(point, ordXl, k ) != xl[i, 3] ){
+        
+        # Ð•ÑÐ»Ð¸ Ð°Ð»Ð³Ð¾Ñ€Ð¸Ñ‚Ð¼ Ð¾ÑˆÐ¸Ð±ÑÑ, Ñ‚Ð¾ ÑˆÑ‚Ñ€Ð°Ñ„ÑƒÐµÐ¼ ÐµÐ³Ð¾
+        MLOO[k][1] <-  MLOO[k][1] + (1/l)
+      }
+    }
   }
-  print(counters)
+  # Ð’Ñ‹Ð±Ð¸Ñ€Ð°ÐµÐ¼ Ð¾Ð¿Ñ‚Ð¸Ð¼Ð°Ð»ÑŒÐ½Ñ‹Ð¹ k
+  min <- which.min(MLOO)
+  print(MLOO)
+  return(min)
   
-  return(names(which.max(counters)))
-  
-}  
+} 
 
 marginF <- function(point, xl, k){
   n <- dim(xl)[2]
-  q <- 0.96
-  
   ordXl <- sortByDist(point[1:2], xl)
-
+  
   classes <- ordXl[1:k, n]
   counts <- table(classes)
-
+  
   r1 <- counts[point$Species]
   
   r2 <- sum(counts[names(counts) != point$Species])
@@ -72,19 +80,17 @@ stolpF <- function(xl, delta, miss, algK = KNN, algM = marginF ) {
   marg <- matrix(0, dim(xl)[1], 1)
   
   for (i in 1:dim(xl)[1]) {
-  
+    
     marg[i] <- marginF(xl[i,], xl[-i,], k)
     
   }
-    
-  # âûáðàñûâàåì øóìîâûå òî÷êè âûáîðêè 
+  
   xd <- xl[which(marg > 0),]
   marg <- marg[which(marg > 0)]
   
   omega <- data.frame()
   omegaT <- c()
   
-  # èíèöèàëèçèðóåì ìí-âî omega è óáèðàåì ýòàëîííûå òî÷êè ñ âûáîðêè
   for (i in levels(xd[, 3])) {
     class <- which(xd[, 3] == i)
     omega <- rbind(omega, xd[class[which.max(marg[class])],])
@@ -95,6 +101,10 @@ stolpF <- function(xl, delta, miss, algK = KNN, algM = marginF ) {
   l <- dim(xd)[1]
   
   while (dim(xl)[1] > dim(omega)[1]) {
+    
+    k <- LOO(xd, omega)
+    print(k)
+    
     rownames(xd) <- c(1:l)
     
     marg <- matrix(0, dim(xd)[1], 1)
@@ -113,16 +123,16 @@ stolpF <- function(xl, delta, miss, algK = KNN, algM = marginF ) {
     } # for
     
     print(paste("miss: ", err))
-      
+
     E <- xd[which(marg < 0),]
     marg <- marg[which(marg < 0)]
     
     if (dim(E)[1] < miss ) {
       break
     }
-
     
-    # ïåðåäåëàé, ñëàäêàÿ
+    
+    # Ã¯Ã¥Ã°Ã¥Ã¤Ã¥Ã«Ã Ã©, Ã±Ã«Ã Ã¤ÃªÃ Ã¿
     omega <- rbind(omega, E[which.min(marg),])
     omegaT <- as.numeric(rownames(E[which.min(marg),]))
     
@@ -140,20 +150,20 @@ stolpF <- function(xl, delta, miss, algK = KNN, algM = marginF ) {
 }
 
 classMap <- function(xl){
-  
+  xd <- iris[,3:5]
   colors <- c( "setosa" = "purple","versicolor" = "pink2", "virginica" = "yellow2", "black" )
-  plot( xl[, 1:2], pch = 21, xlim = c(1, 7), ylim = c(-1,3),main = "Êàðòà êëàññèôèêàöèè èðèñîâ Ôèøåðà äëÿ 7NN ñ ýòàëîíàìè", bg = colors[xl[,3]], col = colors[4], cex = 1.3 )
+  plot( xl[, 1:2], pch = 21, xlim = c(1, 7), ylim = c(-1,3),main = "...", bg = colors[xl[,3]], col = colors[4], cex = 1.3 )
   i <- 0.8
-   while (i <= 7.3) {
-       j <- -1.1
-       while (j <= 3.2) {
-           z <- c(i, j)
-           class <- KNN(z, xl, 7)
-           points(z[1], z[2], pch = 1, col = colors[class], asp = 1)
-           j <- j + 0.1
-       }
-       i <- i + 0.1
-   }
+  while (i <= 7.3) {
+    j <- -1.1
+    while (j <= 3.2) {
+      z <- c(i, j)
+      class <- KNN(z, xl, 1)
+      points(z[1], z[2], pch = 1, col = colors[class], asp = 1)
+      j <- j + 0.1
+    }
+    i <- i + 0.1
+  }
   
 }
 
@@ -161,16 +171,19 @@ stolpCount <- function(){
   xl <- iris[, 3:5]
   st <- stolpF(xl, -0.01, 1)
   
+  time(st)
   
-  colors <- c( "setosa" = "purple","versicolor" = "pink2", "virginica" = "yellow2", "black" )
-  plot( iris[, 3:4], pch = 21, xlim = c(1, 7), ylim = c(-1,3),main = "Êàðòà êëàññèôèêàöèè èðèñîâ Ôèøåðà äëÿ 6NN", col = colors[iris$Species], cex = 1.3 )
+  #classMap(st)
   
-  for (i in 1:dim(st)[1]) {
-    points(st[i,1:2], pch = 21,  bg = colors[st[i,3]], col = colors[st[i,3]], cex = 1.4)
-    
-  }
-  
-  classMap(st)
+  #colors <- c( "setosa" = "purple","versicolor" = "pink2", "virginica" = "yellow2", "black" )
+  #plot( iris[, 3:4], pch = 21, xlim = c(1, 7), ylim = c(-1,3),
+  #      main = "ÐšÐ°Ñ€Ñ‚Ð° ÐºÐ»Ð°ÑÑÐ¸Ñ„Ð¸ÐºÐ°Ñ†Ð¸Ð¸ Ð¸Ñ€Ð¸ÑÐ¾Ð² Ñ„Ð¸ÑˆÐµÑ€Ð°",
+  #      col = colors[iris$Species], cex = 1.3 )
+  #
+  #for (i in 1:dim(st)[1]) {
+  #  points(st[i,1:2], pch = 21,  bg = colors[st[i,3]], col = colors[st[i,3]], cex = 1.4)
+  #  
+  #}
   
 }
 
@@ -193,4 +206,21 @@ marginCount <- function(){
   
 }
 
-marginCount()
+time <- function(st){
+  xd <- iris[,3:5] 
+  start <- Sys.time()
+  for(i in 1:dim(xd)[1]) {
+    
+    xl <- xd[-i,]
+    point <- c(xd[i,1:2])
+    KNN(point, st, 1)
+    
+  }
+  
+  end <- Sys.time()
+  
+  print(end - start)
+  
+}
+
+stolpCount()
