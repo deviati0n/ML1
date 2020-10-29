@@ -14,6 +14,8 @@
   + [Потенциальные функции](https://github.com/deviati0n/ML1#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-%D0%BF%D0%BE%D1%82%D0%B5%D0%BD%D1%86%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D1%85-%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D0%B9)
   + [Отбор эталонных объектов](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BE%D1%82%D0%B1%D0%BE%D1%80-%D1%8D%D1%82%D0%B0%D0%BB%D0%BE%D0%BD%D0%BD%D1%8B%D1%85-%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D0%BE%D0%B2)
   + [LOO](https://github.com/deviati0n/ML1/blob/master/README.md#%D1%81%D0%BA%D0%BE%D0%BB%D1%8C%D0%B7%D1%8F%D1%89%D0%B8%D0%B9-%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D1%8C-loo)
++ [Байесовские методы классификации]()
+  + [Линии уровня нормального распределения]()
 
 # Метрические алгоритмы классификации #
 
@@ -653,6 +655,15 @@ LOO <- function(xl, alg = Parz){
 Анализируя данные в таблице, прийдем к выводу, что самым опимальным алгоритмом для ирисов фишер является **KNN** с параметром k = 6.
 
 [Оглавление](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BF%D0%BE%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0-%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B8)
+
+# Байесовские методы классификации #
+
+## Линии уровня нормального распределения ##
+**Линией уровня** функции двух переменных называется линия (множество точек) на координатной плоскости, в которых функция принимает одинаковые значения. Перед нами стоит задача построить линии уровня, когда даны ковариционная матрица нормального распределения и мат ожидание. 
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\mathcal{N}(x;&space;\mu&space;,&space;\Sigma&space;)&space;=&space;\frac{1}{\sqrt{(2\pi&space;)^{n}&space;\left&space;|&space;\Sigma&space;\right&space;|}}&space;\exp&space;\left(&space;-\frac{1}{2}(x-\mu&space;)^{T}\Sigma&space;^{-1}(x-\mu&space;)&space;\right&space;),&space;x&space;\in&space;\mathbb{R}&space;^&space;{n}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mathcal{N}(x;&space;\mu&space;,&space;\Sigma&space;)&space;=&space;\frac{1}{\sqrt{(2\pi&space;)^{n}&space;\left&space;|&space;\Sigma&space;\right&space;|}}&space;\exp&space;\left(&space;-\frac{1}{2}(x-\mu&space;)^{T}\Sigma&space;^{-1}(x-\mu&space;)&space;\right&space;),&space;x&space;\in&space;\mathbb{R}&space;^&space;{n}" title="\mathcal{N}(x; \mu , \Sigma ) = \frac{1}{\sqrt{(2\pi )^{n} \left | \Sigma \right |}} \exp \left( -\frac{1}{2}(x-\mu )^{T}\Sigma ^{-1}(x-\mu ) \right ), x \in \mathbb{R} ^ {n}" /></a> - **n-мерное нормальное (гауссовское) распределение с мат ожиданием (центром) <a href="https://www.codecogs.com/eqnedit.php?latex=\mu&space;\in&space;\mathbb{R}&space;^&space;{n}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mu&space;\in&space;\mathbb{R}&space;^&space;{n}" title="\mu \in \mathbb{R} ^ {n}" /></a> и ковариационной матрицей <a href="https://www.codecogs.com/eqnedit.php?latex=\Sigma&space;\in&space;\mathbb{R}&space;^&space;{n&space;\times&space;n}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Sigma&space;\in&space;\mathbb{R}&space;^&space;{n&space;\times&space;n}" title="\Sigma \in \mathbb{R} ^ {n \times n}" /></a>.
+
+
 
 
 
