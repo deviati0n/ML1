@@ -687,7 +687,7 @@ LOO <- function(xl, alg = Parz){
 
 <img src="https://user-images.githubusercontent.com/71149650/97671130-b93bfe80-1a98-11eb-8d79-7459bd432cb0.png" width="550"/>  
 
-
+[Оглавление](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BF%D0%BE%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0-%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B8)
 
 
 
