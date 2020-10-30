@@ -667,9 +667,25 @@ LOO <- function(xl, alg = Parz){
 
 1) Если матрица ковариации **пропорциональная едичной**, то все компоненты нормального распределения являются независимыми друг от друга и имеют одинаковую дисперсию. Линии уровня образуют **окружности**.
 
-2) **Диагональная** матрица ковариации соответствует независимым компонентам, но с различными дисперсиями. В этом случае линии уровня - **эллипсы, параллельными координатным осям**.
+<a href="https://www.codecogs.com/eqnedit.php?latex=\mu&space;=(0,&space;0),&space;\Sigma&space;=&space;\begin{pmatrix}&space;1&space;&&space;0&space;\\&space;0&space;&&space;1&space;\end{pmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mu&space;=(0,&space;0),&space;\Sigma&space;=&space;\begin{pmatrix}&space;1&space;&&space;0&space;\\&space;0&space;&&space;1&space;\end{pmatrix}" title="\mu =(0, 0), \Sigma = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}" /></a>
 
-3) Произвольная положительная определенная матрица ковариации соответствует эллипсам общего вида.
+<img src="https://user-images.githubusercontent.com/71149650/97670904-4894e200-1a98-11eb-91c7-a22642836927.png" width="550"/>
+
+2) **Диагональная** матрица ковариации соответствует независимым компонентам, но с различными дисперсиями. В этом случае линии уровня - **эллипсы с осями, параллельными координатным осям**.
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\mu&space;=(0,&space;0),&space;\Sigma&space;=&space;\begin{pmatrix}&space;3&space;&&space;0&space;\\&space;0&space;&&space;1&space;\end{pmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mu&space;=(0,&space;0),&space;\Sigma&space;=&space;\begin{pmatrix}&space;3&space;&&space;0&space;\\&space;0&space;&&space;1&space;\end{pmatrix}" title="\mu =(0, 0), \Sigma = \begin{pmatrix} 3 & 0 \\ 0 & 1 \end{pmatrix}" /></a>
+
+<img src="https://user-images.githubusercontent.com/71149650/97671019-80038e80-1a98-11eb-9701-666706bf9751.png" width="550"/>
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\mu&space;=(0,&space;0),&space;\Sigma&space;=&space;\begin{pmatrix}&space;1&space;&&space;0&space;\\&space;0&space;&&space;3&space;\end{pmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mu&space;=(0,&space;0),&space;\Sigma&space;=&space;\begin{pmatrix}&space;1&space;&&space;0&space;\\&space;0&space;&&space;3&space;\end{pmatrix}" title="\mu =(0, 0), \Sigma = \begin{pmatrix} 1 & 0 \\ 0 & 3 \end{pmatrix}" /></a>
+
+<img src="https://user-images.githubusercontent.com/71149650/97671044-90b40480-1a98-11eb-9f7e-067fec78c3c4.png" width="550"/>                                                                                                                            
+
+3) Если признаки коррелированы, то матрица ковариации не диагональна. В этом случае линии уровня - эллипсы, оси которых повернуты.
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\mu&space;=(0,&space;0),&space;\Sigma&space;=&space;\begin{pmatrix}&space;4&space;&&space;2&space;\\&space;2&space;&&space;2&space;\end{pmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mu&space;=(0,&space;0),&space;\Sigma&space;=&space;\begin{pmatrix}&space;4&space;&&space;2&space;\\&space;2&space;&&space;2&space;\end{pmatrix}" title="\mu =(0, 0), \Sigma = \begin{pmatrix} 4 & 2 \\ 2 & 2 \end{pmatrix}" /></a>
+
+<img src="https://user-images.githubusercontent.com/71149650/97671130-b93bfe80-1a98-11eb-8d79-7459bd432cb0.png" width="550"/>  
 
 
 
