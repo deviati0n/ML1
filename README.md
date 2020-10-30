@@ -681,7 +681,7 @@ LOO <- function(xl, alg = Parz){
 
 <img src="https://user-images.githubusercontent.com/71149650/97671044-90b40480-1a98-11eb-9f7e-067fec78c3c4.png" width="550"/>                                                                                                                            
 
-3) Если признаки коррелированы, то матрица ковариации не диагональна. В этом случае линии уровня - эллипсы, оси которых повернуты.
+3) Если признаки коррелированы, то матрица ковариации **не диагональна**. В этом случае линии уровня - **эллипсы, оси которых повернуты**.
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\mu&space;=(0,&space;0),&space;\Sigma&space;=&space;\begin{pmatrix}&space;4&space;&&space;2&space;\\&space;2&space;&&space;2&space;\end{pmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mu&space;=(0,&space;0),&space;\Sigma&space;=&space;\begin{pmatrix}&space;4&space;&&space;2&space;\\&space;2&space;&&space;2&space;\end{pmatrix}" title="\mu =(0, 0), \Sigma = \begin{pmatrix} 4 & 2 \\ 2 & 2 \end{pmatrix}" /></a>
 
