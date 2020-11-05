@@ -16,8 +16,8 @@
   + [LOO](https://github.com/deviati0n/ML1/blob/master/README.md#%D1%81%D0%BA%D0%BE%D0%BB%D1%8C%D0%B7%D1%8F%D1%89%D0%B8%D0%B9-%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D1%8C-loo)
 + [Байесовские методы классификации](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%B1%D0%B0%D0%B9%D0%B5%D1%81%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B5-%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%D1%8B-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D0%B8)
   + [Линии уровня нормального распределения](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BB%D0%B8%D0%BD%D0%B8%D0%B8-%D1%83%D1%80%D0%BE%D0%B2%D0%BD%D1%8F-%D0%BD%D0%BE%D1%80%D0%BC%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B3%D0%BE-%D1%80%D0%B0%D1%81%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F)
-  + [Наивный нормальный байесовский классификатор]()
-  + [Подстановочный алгоритм (plug-in)]()
+  + [Наивный нормальный байесовский классификатор](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BD%D0%B0%D0%B8%D0%B2%D0%BD%D1%8B%D0%B9-%D0%BD%D0%BE%D1%80%D0%BC%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9-%D0%B1%D0%B0%D0%B9%D0%B5%D1%81%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D1%80)
+  + [Подстановочный алгоритм (plug-in)](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BF%D0%BE%D0%B4%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BE%D1%87%D0%BD%D1%8B%D0%B9-%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC-plug-in)
   + [Линейный дискриминант Фишера - ЛДФ]()
 
 # Метрические алгоритмы классификации #
@@ -732,19 +732,19 @@ PlugIn <- function(mu1, sigma1, mu2, sigma2){
 
 ### Возможные варианты разделяющей кривой ###
 
-+ Эллипс
++ **Эллипс**
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\mu&space;_{1}&space;=&space;(0,&space;2)&space;\qquad&space;\Sigma_{1}&space;=&space;\begin{pmatrix}&space;1&space;&&space;0&space;\\&space;0&space;&&space;8&space;\end{pmatrix}&space;\qquad&space;\mu&space;_{2}&space;=&space;(3,&space;2)&space;\qquad&space;\Sigma_{2}&space;=&space;\begin{pmatrix}&space;0.1&space;&&space;0&space;\\&space;0&space;&&space;0.1&space;\end{pmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mu&space;_{1}&space;=&space;(0,&space;2)&space;\qquad&space;\Sigma_{1}&space;=&space;\begin{pmatrix}&space;1&space;&&space;0&space;\\&space;0&space;&&space;8&space;\end{pmatrix}&space;\qquad&space;\mu&space;_{2}&space;=&space;(3,&space;2)&space;\qquad&space;\Sigma_{2}&space;=&space;\begin{pmatrix}&space;0.1&space;&&space;0&space;\\&space;0&space;&&space;0.1&space;\end{pmatrix}" title="\mu _{1} = (0, 2) \qquad \Sigma_{1} = \begin{pmatrix} 1 & 0 \\ 0 & 8 \end{pmatrix} \qquad \mu _{2} = (3, 2) \qquad \Sigma_{2} = \begin{pmatrix} 0.1 & 0 \\ 0 & 0.1 \end{pmatrix}" /></a>
 
 <img src="https://user-images.githubusercontent.com/71149650/98244594-bbaec480-1f80-11eb-836d-49885a604aa0.png" width="550"/>  
 
-+ Парабола 
++ **Парабола** 
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\mu&space;_{1}&space;=&space;(10,&space;0)&space;\qquad&space;\Sigma_{1}&space;=&space;\begin{pmatrix}&space;10&space;&&space;0&space;\\&space;0&space;&&space;1&space;\end{pmatrix}&space;\qquad&space;\mu&space;_{2}&space;=&space;(3,&space;2)&space;\qquad&space;\Sigma_{2}&space;=&space;\begin{pmatrix}&space;1&space;&&space;0&space;\\&space;0&space;&&space;1&space;\end{pmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mu&space;_{1}&space;=&space;(10,&space;0)&space;\qquad&space;\Sigma_{1}&space;=&space;\begin{pmatrix}&space;10&space;&&space;0&space;\\&space;0&space;&&space;1&space;\end{pmatrix}&space;\qquad&space;\mu&space;_{2}&space;=&space;(3,&space;2)&space;\qquad&space;\Sigma_{2}&space;=&space;\begin{pmatrix}&space;1&space;&&space;0&space;\\&space;0&space;&&space;1&space;\end{pmatrix}" title="\mu _{1} = (10, 0) \qquad \Sigma_{1} = \begin{pmatrix} 10 & 0 \\ 0 & 1 \end{pmatrix} \qquad \mu _{2} = (3, 2) \qquad \Sigma_{2} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}" /></a>
 
 <img src="https://user-images.githubusercontent.com/71149650/98244660-d719cf80-1f80-11eb-8e0c-35b532cee121.png" width="550"/>  
 
-+ Гипербола 
++ **Гипербола** 
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\mu&space;_{1}&space;=&space;(1,&space;2)&space;\qquad&space;\Sigma_{1}&space;=&space;\begin{pmatrix}&space;3&space;&&space;0&space;\\&space;0&space;&&space;0.3&space;\end{pmatrix}&space;\qquad&space;\mu&space;_{2}&space;=&space;(5,&space;1)&space;\qquad&space;\Sigma_{2}&space;=&space;\begin{pmatrix}&space;1&space;&&space;0&space;\\&space;0&space;&&space;8&space;\end{pmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mu&space;_{1}&space;=&space;(1,&space;2)&space;\qquad&space;\Sigma_{1}&space;=&space;\begin{pmatrix}&space;3&space;&&space;0&space;\\&space;0&space;&&space;0.3&space;\end{pmatrix}&space;\qquad&space;\mu&space;_{2}&space;=&space;(5,&space;1)&space;\qquad&space;\Sigma_{2}&space;=&space;\begin{pmatrix}&space;1&space;&&space;0&space;\\&space;0&space;&&space;8&space;\end{pmatrix}" title="\mu _{1} = (1, 2) \qquad \Sigma_{1} = \begin{pmatrix} 3 & 0 \\ 0 & 0.3 \end{pmatrix} \qquad \mu _{2} = (5, 1) \qquad \Sigma_{2} = \begin{pmatrix} 1 & 0 \\ 0 & 8 \end{pmatrix}" /></a>
 
