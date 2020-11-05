@@ -16,6 +16,9 @@
   + [LOO](https://github.com/deviati0n/ML1/blob/master/README.md#%D1%81%D0%BA%D0%BE%D0%BB%D1%8C%D0%B7%D1%8F%D1%89%D0%B8%D0%B9-%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D1%8C-loo)
 + [Байесовские методы классификации](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%B1%D0%B0%D0%B9%D0%B5%D1%81%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B5-%D0%BC%D0%B5%D1%82%D0%BE%D0%B4%D1%8B-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D0%B8)
   + [Линии уровня нормального распределения](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BB%D0%B8%D0%BD%D0%B8%D0%B8-%D1%83%D1%80%D0%BE%D0%B2%D0%BD%D1%8F-%D0%BD%D0%BE%D1%80%D0%BC%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B3%D0%BE-%D1%80%D0%B0%D1%81%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F)
+  + [Наивный нормальный байесовский классификатор]()
+  + [Подстановочный алгоритм (plug-in)]()
+  + [Линейный дискриминант Фишера - ЛДФ]()
 
 # Метрические алгоритмы классификации #
 
@@ -690,8 +693,50 @@ LOO <- function(xl, alg = Parz){
 [Оглавление](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BF%D0%BE%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0-%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B8)
 
 
+## Наивный нормальный байесовский классификатор ##
 
 
+## Подстановочный алгоритм (plug-in) ##
+
+**Plug-in** - это еще один вариант байесовского алгоритма классификации. В данном методе требуется восстанавливать параметры нормального распределения для каждого класса и подставлять восстановленные плотности в формулу байесовского классификатора. 
+
+Параметры нормального распределения оцениваются согласно формулам:
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\mu&space;_{y}&space;=&space;\frac{1}{l_{y}}\sum_{x_{i}:y_{i}=y}x_{i}&space;\qquad&space;\Sigma_{y}&space;=&space;\frac{1}{l_{y}&space;-&space;1}\sum_{x_{i}:y_{i}=y}(x_{i}&space;-&space;\mu&space;_{y})(x_{i}&space;-&space;\mu&space;_{y})^{T}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mu&space;_{y}&space;=&space;\frac{1}{l_{y}}\sum_{x_{i}:y_{i}=y}x_{i}&space;\qquad&space;\Sigma_{y}&space;=&space;\frac{1}{l_{y}&space;-&space;1}\sum_{x_{i}:y_{i}=y}(x_{i}&space;-&space;\mu&space;_{y})(x_{i}&space;-&space;\mu&space;_{y})^{T}" title="\mu _{y} = \frac{1}{l_{y}}\sum_{x_{i}:y_{i}=y}x_{i} \qquad \Sigma_{y} = \frac{1}{l_{y} - 1}\sum_{x_{i}:y_{i}=y}(x_{i} - \mu _{y})(x_{i} - \mu _{y})^{T}" /></a>
+
+С помощью данного алгоритма можно получить **кривую**, которая будет **разделять классы**.
+
+### Реализация алгоритма Plug-in ###
+``` r
+
+PlugIn <- function(mu1, sigma1, mu2, sigma2){
+      
+  # Уравнение имеет вид : a*x1^2 + b*x1*x2 + c*x2^2 + d*x1 + e*x2 + f = 0    
+  alpha <- solve(sigma1) - solve(sigma2)
+  a <- alpha[1, 1]
+  b <- 2 * alpha[1, 2]
+  c <- alpha[2, 2]
+  
+  beta <- solve(sigma1) %*% t(mu1) - solve(sigma2) %*% t(mu2)
+  d <- -2 * beta[1, 1]
+  e <- -2 * beta[2, 1]
+  
+  
+  f <- log( abs(det(sigma1) ) ) - log( abs(det(sigma2) ) ) + mu1 %*% solve(sigma1) %*% t(mu1) - mu2 %*% solve(sigma2) %*% t(mu2);
+  
+  return( c(a, b, c, d, e, f))
+  
+}
+
+```
+
+### Возможные варианты разделяющей кривой ###
+
++ Эллипс
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\mu&space;_{1}&space;=&space;(0,&space;2)&space;\qquad&space;\Sigma_{1}&space;=&space;\begin{pmatrix}&space;1&space;&&space;0&space;\\&space;0&space;&&space;8&space;\end{pmatrix}&space;\\&space;\mu&space;_{2}&space;=&space;(3,&space;2)&space;\qquad&space;\Sigma_{2}&space;=&space;\begin{pmatrix}&space;0.1&space;&&space;0&space;\\&space;0&space;&&space;0.1&space;\end{pmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mu&space;_{1}&space;=&space;(0,&space;2)&space;\qquad&space;\Sigma_{1}&space;=&space;\begin{pmatrix}&space;1&space;&&space;0&space;\\&space;0&space;&&space;8&space;\end{pmatrix}&space;\\&space;\mu&space;_{2}&space;=&space;(3,&space;2)&space;\qquad&space;\Sigma_{2}&space;=&space;\begin{pmatrix}&space;0.1&space;&&space;0&space;\\&space;0&space;&&space;0.1&space;\end{pmatrix}" title="\mu _{1} = (0, 2) \qquad \Sigma_{1} = \begin{pmatrix} 1 & 0 \\ 0 & 8 \end{pmatrix} \\ \mu _{2} = (3, 2) \qquad \Sigma_{2} = \begin{pmatrix} 0.1 & 0 \\ 0 & 0.1 \end{pmatrix}" /></a>
+
+<img src="https://user-images.githubusercontent.com/71149650/98244594-bbaec480-1f80-11eb-836d-49885a604aa0.png" width="550"/>  
 
 
 
