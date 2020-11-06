@@ -694,7 +694,14 @@ LOO <- function(xl, alg = Parz){
 
 
 ## Наивный нормальный байесовский классификатор ##
-Данный метод основывается на том, что объекты описываются *n* статистически независимыми признаками. Это предположение существенно облегчает задачу, так как оценить *n* одномерных плотностей легче, чем одну *n*-мерную плотность.
+Данный метод основывается на том, что объекты описываются **n** статистически независимыми признаками. Это предположение существенно облегчает задачу, так как оценить **n** одномерных плотностей легче, чем одну **n**-мерную плотность.
+ 
+**Оценка приорных вероятностей класса** имеет вид:
+<a href="https://www.codecogs.com/eqnedit.php?latex=\hat{P}_{y}&space;=&space;\frac{\left&space;|&space;X_{y}^{l}\right&space;|}{l}&space;\qquad&space;y&space;\in&space;Y" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\hat{P}_{y}&space;=&space;\frac{\left&space;|&space;X_{y}^{l}\right&space;|}{l}&space;\qquad&space;y&space;\in&space;Y" title="\hat{P}_{y} = \frac{\left | X_{y}^{l}\right |}{l} \qquad y \in Y" /></a> 
+
+**Эмпирическая оценка плотности распределения** имеет вид:
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\widehat{{p}_{yj}}(\xi&space;)&space;=&space;\frac{1}{\sigma&space;_{yj}\sqrt{2\pi}}&space;\exp\left&space;(&space;-\frac{(\xi&space;-\mu&space;_{yj})^{2}}{2\sigma&space;_{yj}^{2}}&space;\right&space;),&space;\qquad&space;y&space;\in&space;Y,&space;\qquad&space;j&space;=&space;\overline{1,n}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\widehat{{p}_{yj}}(\xi&space;)&space;=&space;\frac{1}{\sigma&space;_{yj}\sqrt{2\pi}}&space;\exp\left&space;(&space;-\frac{(\xi&space;-\mu&space;_{yj})^{2}}{2\sigma&space;_{yj}^{2}}&space;\right&space;),&space;\qquad&space;y&space;\in&space;Y,&space;\qquad&space;j&space;=&space;\overline{1,n}" title="\widehat{{p}_{yj}}(\xi ) = \frac{1}{\sigma _{yj}\sqrt{2\pi}} \exp\left ( -\frac{(\xi -\mu _{yj})^{2}}{2\sigma _{yj}^{2}} \right ), \qquad y \in Y, \qquad j = \overline{1,n}" /></a>
 
 Алгоритм **НБК** имеет вид:
 
