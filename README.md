@@ -694,6 +694,40 @@ LOO <- function(xl, alg = Parz){
 
 
 ## Наивный нормальный байесовский классификатор ##
+Данный метод основывается на том, что объекты описываются *n* статистически независимыми признаками. Это предположение существенно облегчает задачу, так как оценить *n* одномерных плотностей легче, чем одну *n*-мерную плотность.
+
+Алгоритм **НБК** имеет вид:
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=a(x)&space;=&space;\arg&space;\max_{y\in&space;Y}&space;\left&space;(&space;\ln&space;\lambda_{y}&space;\hat{P}_{y}&space;&plus;&space;\sum_{j&space;=&space;1}^{n}&space;\ln&space;\hat{p}_{yj}&space;(\xi&space;_{j})\right&space;)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?a(x)&space;=&space;\arg&space;\max_{y\in&space;Y}&space;\left&space;(&space;\ln&space;\lambda_{y}&space;\hat{P}_{y}&space;&plus;&space;\sum_{j&space;=&space;1}^{n}&space;\ln&space;\hat{p}_{yj}&space;(\xi&space;_{j})\right&space;)" title="a(x) = \arg \max_{y\in Y} \left ( \ln \lambda_{y} \hat{P}_{y} + \sum_{j = 1}^{n} \ln \hat{p}_{yj} (\xi _{j})\right )" /></a>
+
+
+
+### Реализация алгоритма НБК ###
+``` r
+# Параметры: входная точка, априорные вероятности классов, матрица ковариации, мат ожидание и величина потери для каждого класса
+naiveBC <- function(x, Py, sigma, mu, l = c(1, 1, 1)){
+  
+  #Апостериорные вероятности классов
+  Ver <- rep(0, dim(Py))
+  
+  for (i in 1:dim(Py)) {
+      sum <- 0
+      
+      for (j in 1:length(x)) {
+        # Считаем вторую часть формулы (сумму)
+        sum <- sum + log(plotn(x[j], mu[i, j], sigma[i, j]))
+
+      }
+    # Находим плотность классов в заданной точке
+    Ver[i] <- log(l[i] * Py[i]) + sum
+  }
+  
+  # Возвращаем класс с максимальной апостериорной вероятностью 
+  return( c(which.max(Ver), max(Ver)) )
+  
+}
+```
+
 
 
 ## Подстановочный алгоритм (plug-in) ##
@@ -706,12 +740,13 @@ LOO <- function(xl, alg = Parz){
 
 С помощью данного алгоритма можно получить **кривую**, которая будет **разделять классы**.
 
-### Реализация алгоритма Plug-in ###
+### Получение коэффициентов алгоритма plug-in ###
 ``` r
 
 PlugIn <- function(mu1, sigma1, mu2, sigma2){
       
-  # Уравнение имеет вид : a*x1^2 + b*x1*x2 + c*x2^2 + d*x1 + e*x2 + f = 0    
+  # Уравнение имеет вид : a*x1^2 + b*x1*x2 + c*x2^2 + d*x1 + e*x2 + f = 0 
+  
   alpha <- solve(sigma1) - solve(sigma2)
   a <- alpha[1, 1]
   b <- 2 * alpha[1, 2]
