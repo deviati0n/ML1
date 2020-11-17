@@ -827,9 +827,10 @@ PlugIn <- function(mu1, sigma1, mu2, sigma2){
  
  + Также еще одним способом решения проблемы линейно неразделимой выборки явлется переход от исходного пространтсва **X** новому **H** с помощью некоторого преобразования.
  
- Введем понятие **ядра**. Функция **K** - **ядро**, если можно представить <a href="https://www.codecogs.com/eqnedit.php?latex=K(x,&space;{x}')&space;=&space;\left&space;\langle&space;\psi(x),&space;\psi({x}')&space;\right&space;\rangle" target="_blank"><img src="https://latex.codecogs.com/gif.latex?K(x,&space;{x}')&space;=&space;\left&space;\langle&space;\psi(x),&space;\psi({x}')&space;\right&space;\rangle" title="K(x, {x}') = \left \langle \psi(x), \psi({x}') \right \rangle" /></a> при некотором отображении <a href="https://www.codecogs.com/eqnedit.php?latex=\psi(x):&space;X&space;\rightarrow&space;H" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\psi(x):&space;X&space;\rightarrow&space;H" title="\psi(x): X \rightarrow H" /></a>, **H** - пр-во со скалярным произведением. 
+ Введем понятие **ядра**. Функция **K** - **ядро**, если её можно представить <a href="https://www.codecogs.com/eqnedit.php?latex=K(x,&space;{x}')&space;=&space;\left&space;\langle&space;\psi(x),&space;\psi({x}')&space;\right&space;\rangle" target="_blank"><img src="https://latex.codecogs.com/gif.latex?K(x,&space;{x}')&space;=&space;\left&space;\langle&space;\psi(x),&space;\psi({x}')&space;\right&space;\rangle" title="K(x, {x}') = \left \langle \psi(x), \psi({x}') \right \rangle" /></a> при некотором отображении <a href="https://www.codecogs.com/eqnedit.php?latex=\psi(x):&space;X&space;\rightarrow&space;H" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\psi(x):&space;X&space;\rightarrow&space;H" title="\psi(x): X \rightarrow H" /></a>, **H** - пр-во со скалярным произведением. 
  
- И заменить  скалярное произведение на функцию ядра <a href="https://www.codecogs.com/eqnedit.php?latex=K(x,&space;x{}')" target="_blank"><img src="https://latex.codecogs.com/gif.latex?K(x,&space;x{}')" title="K(x, x{}')" /></a>. 
+ И заменить  скалярное произведение на ядро. 
+ 
  
  
  
