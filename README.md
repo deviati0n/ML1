@@ -823,7 +823,9 @@ PlugIn <- function(mu1, sigma1, mu2, sigma2){
   
   *C* - (гиперпараметр) положительная константа, которая позволяет находить компромисс между максимизацией ширины разделяющей полосы и минимизацией суммарной ошибки. Ее обычно выбирают по критерию скользящего контроля.
   
-  Далее решаем двойственную задачу поиска седловой точки функции Лагранжа, которая эквивалента обобщенной задаче.     
+  Далее решаем двойственную задачу поиска седловой точки функции Лагранжа, которая эквивалента обобщенной задаче.
+  <img src="https://user-images.githubusercontent.com/71149650/99395547-a6775580-28f1-11eb-80ab-a0917bbf2b78.png" width="550"/>
+  
  В итоге **алгоритм классификации** имеет вид: 
  
  <a href="https://www.codecogs.com/eqnedit.php?latex=a(x)&space;=\mathrm{sign}&space;\left&space;(&space;\sum_{i=1}^{l}&space;\lambda_{i}&space;y_{i}&space;\left&space;\langle&space;x_{i},&space;x&space;\right&space;\rangle&space;-&space;w_{0}&space;\right&space;)." target="_blank"><img src="https://latex.codecogs.com/gif.latex?a(x)&space;=\mathrm{sign}&space;\left&space;(&space;\sum_{i=1}^{l}&space;\lambda_{i}&space;y_{i}&space;\left&space;\langle&space;x_{i},&space;x&space;\right&space;\rangle&space;-&space;w_{0}&space;\right&space;)." title="a(x) =\mathrm{sign} \left ( \sum_{i=1}^{l} \lambda_{i} y_{i} \left \langle x_{i}, x \right \rangle - w_{0} \right )." /></a>
