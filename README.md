@@ -801,27 +801,7 @@ PlugIn <- function(mu1, sigma1, mu2, sigma2){
 Линейный классификатор имеет вид:
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=a(x)&space;=\mathrm{sign}&space;\left&space;(&space;\left&space;\langle&space;w,&space;x&space;\right&space;\rangle&space;-&space;w_{0}&space;\right&space;)&space;=&space;\mathrm{sign}&space;\left&space;(&space;\sum_{j=1}^{n}&space;w_{j}&space;f_{j}(x)&space;-&space;w_{0}&space;\right&space;)." target="_blank"><img src="https://latex.codecogs.com/gif.latex?a(x)&space;=\mathrm{sign}&space;\left&space;(&space;\left&space;\langle&space;w,&space;x&space;\right&space;\rangle&space;-&space;w_{0}&space;\right&space;)&space;=&space;\mathrm{sign}&space;\left&space;(&space;\sum_{j=1}^{n}&space;w_{j}&space;f_{j}(x)&space;-&space;w_{0}&space;\right&space;)." title="a(x) =\mathrm{sign} \left ( \left \langle w, x \right \rangle - w_{0} \right ) = \mathrm{sign} \left ( \sum_{j=1}^{n} w_{j} f_{j}(x) - w_{0} \right )." /></a>
-+
-+
-+
 
-+
-+
-+
-+
-+
-+
-+
-+
-+
-+
-+
-+
-+
-+
-+
-+
-+
 ## Метод опорных векторов (SVM) ##
  Метод опорных объектов в настоящее время считается одним из самых лучших методом классификации. Данный метод основывается на построении оптимальной разделяющей гиперплоскости. 
   
