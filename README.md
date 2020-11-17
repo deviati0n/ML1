@@ -809,7 +809,7 @@ PlugIn <- function(mu1, sigma1, mu2, sigma2){
   
   Если выборка **линейно разделима** и функционал числа ошибок принимает нулевое значение, тогда разделяющая гиперплоскоть не единственная. Для того, чтобы разделяющая гиперплоскость была оптимальной, она должна максимально далеко стоять от ближайших к ней точек обоих классов.
 
-Для этого ширина полосы (разделитель классов) должна быть максимальной. Для этого:
+Для этого ширина полосы (разделитель классов) должна быть максимальной:
 
   <a href="https://www.codecogs.com/eqnedit.php?latex=\begin{cases}&space;\left&space;\langle&space;w,w&space;\right&space;\rangle&space;\rightarrow&space;\min;&space;\\&space;y_{i}(\left&space;\langle&space;w,&space;x_{i}&space;\right&space;\rangle&space;-&space;w_{0})&space;\geqslant&space;1,&space;&&space;i&space;=&space;\overline{1,l}.&space;\end{cases}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\begin{cases}&space;\left&space;\langle&space;w,w&space;\right&space;\rangle&space;\rightarrow&space;\min;&space;\\&space;y_{i}(\left&space;\langle&space;w,&space;x_{i}&space;\right&space;\rangle&space;-&space;w_{0})&space;\geqslant&space;1,&space;&&space;i&space;=&space;\overline{1,l}.&space;\end{cases}" title="\begin{cases} \left \langle w,w \right \rangle \rightarrow \min; \\ y_{i}(\left \langle w, x_{i} \right \rangle - w_{0}) \geqslant 1, & i = \overline{1,l}. \end{cases}" /></a>
   
