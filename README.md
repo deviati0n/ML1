@@ -19,6 +19,8 @@
   + [Наивный нормальный байесовский классификатор](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BD%D0%B0%D0%B8%D0%B2%D0%BD%D1%8B%D0%B9-%D0%BD%D0%BE%D1%80%D0%BC%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9-%D0%B1%D0%B0%D0%B9%D0%B5%D1%81%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D1%80)
   + [Подстановочный алгоритм (plug-in)](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BF%D0%BE%D0%B4%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BE%D1%87%D0%BD%D1%8B%D0%B9-%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC-plug-in)
   + [Линейный дискриминант Фишера - ЛДФ]()
++[Линейные алгоритмы классификации] ()
+  +[Метод опорных векторов] ()
 
 # Метрические алгоритмы классификации #
 
@@ -793,4 +795,32 @@ PlugIn <- function(mu1, sigma1, mu2, sigma2){
 <img src="https://user-images.githubusercontent.com/71149650/98244981-53acae00-1f81-11eb-8c2b-a0db240c4a85.png" width="550"/>  
 
 
+# Линейные алгоритмы классификации #
 
+## Метод опорных векторов (SVM) ##
+ Метод опорных объектов в настоящее время считается одним из самых лучших методом классификации. Данный метод основывается на построении оптимальной разделяющей гиперплоскости. Положение гиперплоскости зависит от небольшого числа параметров - опорных векторов выборки. 
+  
+  + Если выборка **линейное разделима** и функционал числа ошибок 
+  <a href="https://www.codecogs.com/eqnedit.php?latex=Q(w,&space;w_{0})&space;=&space;\sum_{i=1}^{l}\left&space;[&space;y_{i}&space;(&space;\left&space;\langle&space;w,&space;x_{i}&space;\right&space;\rangle&space;-&space;w_{0})&space;\leqslant&space;0&space;\right&space;]" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Q(w,&space;w_{0})&space;=&space;\sum_{i=1}^{l}\left&space;[&space;y_{i}&space;(&space;\left&space;\langle&space;w,&space;x_{i}&space;\right&space;\rangle&space;-&space;w_{0})&space;\leqslant&space;0&space;\right&space;]" title="Q(w, w_{0}) = \sum_{i=1}^{l}\left [ y_{i} ( \left \langle w, x_{i} \right \rangle - w_{0}) \leqslant 0 \right ]" /></a>
+
+принимает нулевое значение, тогда разделяющая гиперплоскоть не единственная.  
+
+Для того, чтобы разделяющая гиперплоскость как можно дальше стояла от точек выборки, ширина полосы (разделитель классов) должна быть максимальной. Для этого:
+
+  <a href="https://www.codecogs.com/eqnedit.php?latex=\begin{cases}&space;\left&space;\langle&space;w,w&space;\right&space;\rangle&space;\rightarrow&space;\min;&space;\\&space;y_{i}(\left&space;\langle&space;w,&space;x_{i}&space;\right&space;\rangle&space;-&space;w_{0})&space;\geqslant&space;1,&space;&&space;i&space;=&space;\overline{1,l}.&space;\end{cases}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\begin{cases}&space;\left&space;\langle&space;w,w&space;\right&space;\rangle&space;\rightarrow&space;\min;&space;\\&space;y_{i}(\left&space;\langle&space;w,&space;x_{i}&space;\right&space;\rangle&space;-&space;w_{0})&space;\geqslant&space;1,&space;&&space;i&space;=&space;\overline{1,l}.&space;\end{cases}" title="\begin{cases} \left \langle w,w \right \rangle \rightarrow \min; \\ y_{i}(\left \langle w, x_{i} \right \rangle - w_{0}) \geqslant 1, & i = \overline{1,l}. \end{cases}" /></a>
+  
+  Однако на практике линейно разделимы классы встречаются редко. 
+  
+  + Если выборка **линейно неразделима**, необходимо  позволить алгоритму допусакать ошибки на обучающих объектах, но при этом постараемся, чтобы их было меньше.  Для этого введе доп переменные, которые будут характеризовать величину ошибки на объектах выборки. Получим обобщенную задачу:
+  
+  <a href="https://www.codecogs.com/eqnedit.php?latex=\begin{cases}&space;\frac{1}{2}\left&space;\langle&space;w,w&space;\right&space;\rangle&space;&plus;&space;C\sum_{i=1}^{l}\xi_{i}&space;\rightarrow&space;\underset{w,&space;w_{0},&space;\xi}{\min};&space;\\&space;y_{i}(\left&space;\langle&space;w,&space;x_{i}&space;\right&space;\rangle&space;-&space;w_{0})&space;\geqslant&space;1&space;-&space;\xi_{i},&space;&&space;i&space;=&space;\overline{1,l};&space;\\&space;\xi_{i}&space;\geqslant&space;0&space;,&space;&&space;i&space;=&space;\overline{1,l}.&space;\end{cases}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\begin{cases}&space;\frac{1}{2}\left&space;\langle&space;w,w&space;\right&space;\rangle&space;&plus;&space;C\sum_{i=1}^{l}\xi_{i}&space;\rightarrow&space;\underset{w,&space;w_{0},&space;\xi}{\min};&space;\\&space;y_{i}(\left&space;\langle&space;w,&space;x_{i}&space;\right&space;\rangle&space;-&space;w_{0})&space;\geqslant&space;1&space;-&space;\xi_{i},&space;&&space;i&space;=&space;\overline{1,l};&space;\\&space;\xi_{i}&space;\geqslant&space;0&space;,&space;&&space;i&space;=&space;\overline{1,l}.&space;\end{cases}" title="\begin{cases} \frac{1}{2}\left \langle w,w \right \rangle + C\sum_{i=1}^{l}\xi_{i} \rightarrow \underset{w, w_{0}, \xi}{\min}; \\ y_{i}(\left \langle w, x_{i} \right \rangle - w_{0}) \geqslant 1 - \xi_{i}, & i = \overline{1,l}; \\ \xi_{i} \geqslant 0 , & i = \overline{1,l}. \end{cases}" /></a>
+  
+  Далее решаем двойственную задачу поиска седловой точки функции Лагранжа, которая эквивалента обобщенной задаче.     
+ В итоге **алгоритм классификации** имеет вид: 
+ 
+ <a href="https://www.codecogs.com/eqnedit.php?latex=a(x)&space;=\mathrm{sign}&space;\left&space;(&space;\sum_{i=1}^{l}&space;\lambda_{i}&space;y_{i}&space;\left&space;\langle&space;x_{i},&space;x&space;\right&space;\rangle&space;-&space;w_{0}&space;\right&space;)." target="_blank"><img src="https://latex.codecogs.com/gif.latex?a(x)&space;=\mathrm{sign}&space;\left&space;(&space;\sum_{i=1}^{l}&space;\lambda_{i}&space;y_{i}&space;\left&space;\langle&space;x_{i},&space;x&space;\right&space;\rangle&space;-&space;w_{0}&space;\right&space;)." title="a(x) =\mathrm{sign} \left ( \sum_{i=1}^{l} \lambda_{i} y_{i} \left \langle x_{i}, x \right \rangle - w_{0} \right )." /></a>
+ 
+ 
+ 
+  
+  
