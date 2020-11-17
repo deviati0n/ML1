@@ -801,7 +801,9 @@ PlugIn <- function(mu1, sigma1, mu2, sigma2){
 ## Метод опорных векторов (SVM) ##
  Метод опорных объектов в настоящее время считается одним из самых лучших методом классификации. Данный метод основывается на построении оптимальной разделяющей гиперплоскости. Положение гиперплоскости зависит от небольшого числа параметров - опорных векторов выборки. 
   
-  + Если выборка **линейно разделима** и функционал числа ошибок 
+  ### Линейно разделимая выборка ###
+  
+  Если выборка **линейно разделима** и функционал числа ошибок 
   <a href="https://www.codecogs.com/eqnedit.php?latex=Q(w,&space;w_{0})&space;=&space;\sum_{i=1}^{l}\left&space;[&space;y_{i}&space;(&space;\left&space;\langle&space;w,&space;x_{i}&space;\right&space;\rangle&space;-&space;w_{0})&space;\leqslant&space;0&space;\right&space;]" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Q(w,&space;w_{0})&space;=&space;\sum_{i=1}^{l}\left&space;[&space;y_{i}&space;(&space;\left&space;\langle&space;w,&space;x_{i}&space;\right&space;\rangle&space;-&space;w_{0})&space;\leqslant&space;0&space;\right&space;]" title="Q(w, w_{0}) = \sum_{i=1}^{l}\left [ y_{i} ( \left \langle w, x_{i} \right \rangle - w_{0}) \leqslant 0 \right ]" /></a>
 
 принимает нулевое значение, тогда разделяющая гиперплоскоть не единственная.  
@@ -812,7 +814,9 @@ PlugIn <- function(mu1, sigma1, mu2, sigma2){
   
   Однако на практике линейно разделимы классы встречаются редко. 
   
-  + Если выборка **линейно неразделима**, необходимо  позволить алгоритму допусакать ошибки на обучающих объектах, но при этом постараемся, чтобы их было меньше.  Для этого введе доп переменные, которые будут характеризовать величину ошибки на объектах выборки. Получим обобщенную задачу:
+  ### Линейно неразделимая выборка ###
+  
+   + Если выборка **линейно неразделима**, необходимо  позволить алгоритму допусакать ошибки на обучающих объектах, но при этом постараемся, чтобы их было меньше.  Для этого введе доп переменные, которые будут характеризовать величину ошибки на объектах выборки. Получим обобщенную задачу:
   
   <a href="https://www.codecogs.com/eqnedit.php?latex=\begin{cases}&space;\frac{1}{2}\left&space;\langle&space;w,w&space;\right&space;\rangle&space;&plus;&space;C\sum_{i=1}^{l}\xi_{i}&space;\rightarrow&space;\underset{w,&space;w_{0},&space;\xi}{\min};&space;\\&space;y_{i}(\left&space;\langle&space;w,&space;x_{i}&space;\right&space;\rangle&space;-&space;w_{0})&space;\geqslant&space;1&space;-&space;\xi_{i},&space;&&space;i&space;=&space;\overline{1,l};&space;\\&space;\xi_{i}&space;\geqslant&space;0&space;,&space;&&space;i&space;=&space;\overline{1,l}.&space;\end{cases}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\begin{cases}&space;\frac{1}{2}\left&space;\langle&space;w,w&space;\right&space;\rangle&space;&plus;&space;C\sum_{i=1}^{l}\xi_{i}&space;\rightarrow&space;\underset{w,&space;w_{0},&space;\xi}{\min};&space;\\&space;y_{i}(\left&space;\langle&space;w,&space;x_{i}&space;\right&space;\rangle&space;-&space;w_{0})&space;\geqslant&space;1&space;-&space;\xi_{i},&space;&&space;i&space;=&space;\overline{1,l};&space;\\&space;\xi_{i}&space;\geqslant&space;0&space;,&space;&&space;i&space;=&space;\overline{1,l}.&space;\end{cases}" title="\begin{cases} \frac{1}{2}\left \langle w,w \right \rangle + C\sum_{i=1}^{l}\xi_{i} \rightarrow \underset{w, w_{0}, \xi}{\min}; \\ y_{i}(\left \langle w, x_{i} \right \rangle - w_{0}) \geqslant 1 - \xi_{i}, & i = \overline{1,l}; \\ \xi_{i} \geqslant 0 , & i = \overline{1,l}. \end{cases}" /></a>
   
@@ -820,6 +824,13 @@ PlugIn <- function(mu1, sigma1, mu2, sigma2){
  В итоге **алгоритм классификации** имеет вид: 
  
  <a href="https://www.codecogs.com/eqnedit.php?latex=a(x)&space;=\mathrm{sign}&space;\left&space;(&space;\sum_{i=1}^{l}&space;\lambda_{i}&space;y_{i}&space;\left&space;\langle&space;x_{i},&space;x&space;\right&space;\rangle&space;-&space;w_{0}&space;\right&space;)." target="_blank"><img src="https://latex.codecogs.com/gif.latex?a(x)&space;=\mathrm{sign}&space;\left&space;(&space;\sum_{i=1}^{l}&space;\lambda_{i}&space;y_{i}&space;\left&space;\langle&space;x_{i},&space;x&space;\right&space;\rangle&space;-&space;w_{0}&space;\right&space;)." title="a(x) =\mathrm{sign} \left ( \sum_{i=1}^{l} \lambda_{i} y_{i} \left \langle x_{i}, x \right \rangle - w_{0} \right )." /></a>
+ 
+ + Также еще одним способом решения проблемы линейно неразделимой выборки явлется переход от исходного пространтсва **X** новому **H** с помощью некоторого преобразования.
+ 
+ Введем понятие ядра. Функция **K** ядро, если можно представить <a href="https://www.codecogs.com/eqnedit.php?latex=K(x,&space;{x}')&space;=&space;\left&space;\langle&space;\psi(x),&space;\psi({x}')&space;\right&space;\rangle" target="_blank"><img src="https://latex.codecogs.com/gif.latex?K(x,&space;{x}')&space;=&space;\left&space;\langle&space;\psi(x),&space;\psi({x}')&space;\right&space;\rangle" title="K(x, {x}') = \left \langle \psi(x), \psi({x}') \right \rangle" /></a> при некотором отображении <a href="https://www.codecogs.com/eqnedit.php?latex=\psi(x):&space;X&space;\rightarrow&space;H" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\psi(x):&space;X&space;\rightarrow&space;H" title="\psi(x): X \rightarrow H" /></a>, H - пр-во со скалярным произведением. 
+ 
+ И заменить  скалярное произведение на функцию ядра <a href="https://www.codecogs.com/eqnedit.php?latex=K(x,&space;x{}')" target="_blank"><img src="https://latex.codecogs.com/gif.latex?K(x,&space;x{}')" title="K(x, x{}')" /></a>. 
+ 
  
  
  
