@@ -807,12 +807,9 @@ PlugIn <- function(mu1, sigma1, mu2, sigma2){
   
   ### Линейно разделимая выборка ###
   
-  Если выборка **линейно разделима** и функционал числа ошибок 
-  <a href="https://www.codecogs.com/eqnedit.php?latex=Q(w,&space;w_{0})&space;=&space;\sum_{i=1}^{l}\left&space;[&space;y_{i}&space;(&space;\left&space;\langle&space;w,&space;x_{i}&space;\right&space;\rangle&space;-&space;w_{0})&space;\leqslant&space;0&space;\right&space;]" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Q(w,&space;w_{0})&space;=&space;\sum_{i=1}^{l}\left&space;[&space;y_{i}&space;(&space;\left&space;\langle&space;w,&space;x_{i}&space;\right&space;\rangle&space;-&space;w_{0})&space;\leqslant&space;0&space;\right&space;]" title="Q(w, w_{0}) = \sum_{i=1}^{l}\left [ y_{i} ( \left \langle w, x_{i} \right \rangle - w_{0}) \leqslant 0 \right ]" /></a>
+  Если выборка **линейно разделима** и функционал числа ошибок принимает нулевое значение, тогда разделяющая гиперплоскоть не единственная. Для того, чтобы разделяющая гиперплоскость была оптимальной, она должна максимально далеко стоять от ближайших к ней точек обоих классов.
 
-принимает нулевое значение, тогда разделяющая гиперплоскоть не единственная.  
-
-Для того, чтобы разделяющая гиперплоскость как можно дальше стояла от точек выборки, ширина полосы (разделитель классов) должна быть максимальной. Для этого:
+Для этого ширина полосы (разделитель классов) должна быть максимальной. Для этого:
 
   <a href="https://www.codecogs.com/eqnedit.php?latex=\begin{cases}&space;\left&space;\langle&space;w,w&space;\right&space;\rangle&space;\rightarrow&space;\min;&space;\\&space;y_{i}(\left&space;\langle&space;w,&space;x_{i}&space;\right&space;\rangle&space;-&space;w_{0})&space;\geqslant&space;1,&space;&&space;i&space;=&space;\overline{1,l}.&space;\end{cases}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\begin{cases}&space;\left&space;\langle&space;w,w&space;\right&space;\rangle&space;\rightarrow&space;\min;&space;\\&space;y_{i}(\left&space;\langle&space;w,&space;x_{i}&space;\right&space;\rangle&space;-&space;w_{0})&space;\geqslant&space;1,&space;&&space;i&space;=&space;\overline{1,l}.&space;\end{cases}" title="\begin{cases} \left \langle w,w \right \rangle \rightarrow \min; \\ y_{i}(\left \langle w, x_{i} \right \rangle - w_{0}) \geqslant 1, & i = \overline{1,l}. \end{cases}" /></a>
   
