@@ -798,6 +798,10 @@ PlugIn <- function(mu1, sigma1, mu2, sigma2){
 
 # Линейные алгоритмы классификации #
 
+Линейный классификатор имеет вид:
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=a(x)&space;=\mathrm{sign}&space;\left&space;(&space;\left&space;\langle&space;w,&space;x&space;\right&space;\rangle&space;-&space;w_{0}&space;\right&space;)&space;=&space;\mathrm{sign}&space;\left&space;(&space;\sum_{j=1}^{n}&space;w_{j}&space;f_{j}(x)&space;-&space;w_{0}&space;\right&space;)." target="_blank"><img src="https://latex.codecogs.com/gif.latex?a(x)&space;=\mathrm{sign}&space;\left&space;(&space;\left&space;\langle&space;w,&space;x&space;\right&space;\rangle&space;-&space;w_{0}&space;\right&space;)&space;=&space;\mathrm{sign}&space;\left&space;(&space;\sum_{j=1}^{n}&space;w_{j}&space;f_{j}(x)&space;-&space;w_{0}&space;\right&space;)." title="a(x) =\mathrm{sign} \left ( \left \langle w, x \right \rangle - w_{0} \right ) = \mathrm{sign} \left ( \sum_{j=1}^{n} w_{j} f_{j}(x) - w_{0} \right )." /></a>
+
 ## Метод опорных векторов (SVM) ##
  Метод опорных объектов в настоящее время считается одним из самых лучших методом классификации. Данный метод основывается на построении оптимальной разделяющей гиперплоскости. Положение гиперплоскости зависит от небольшого числа параметров - опорных векторов выборки. 
   
@@ -820,6 +824,8 @@ PlugIn <- function(mu1, sigma1, mu2, sigma2){
   
   <a href="https://www.codecogs.com/eqnedit.php?latex=\begin{cases}&space;\frac{1}{2}\left&space;\langle&space;w,w&space;\right&space;\rangle&space;&plus;&space;C\sum_{i=1}^{l}\xi_{i}&space;\rightarrow&space;\underset{w,&space;w_{0},&space;\xi}{\min};&space;\\&space;y_{i}(\left&space;\langle&space;w,&space;x_{i}&space;\right&space;\rangle&space;-&space;w_{0})&space;\geqslant&space;1&space;-&space;\xi_{i},&space;&&space;i&space;=&space;\overline{1,l};&space;\\&space;\xi_{i}&space;\geqslant&space;0&space;,&space;&&space;i&space;=&space;\overline{1,l}.&space;\end{cases}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\begin{cases}&space;\frac{1}{2}\left&space;\langle&space;w,w&space;\right&space;\rangle&space;&plus;&space;C\sum_{i=1}^{l}\xi_{i}&space;\rightarrow&space;\underset{w,&space;w_{0},&space;\xi}{\min};&space;\\&space;y_{i}(\left&space;\langle&space;w,&space;x_{i}&space;\right&space;\rangle&space;-&space;w_{0})&space;\geqslant&space;1&space;-&space;\xi_{i},&space;&&space;i&space;=&space;\overline{1,l};&space;\\&space;\xi_{i}&space;\geqslant&space;0&space;,&space;&&space;i&space;=&space;\overline{1,l}.&space;\end{cases}" title="\begin{cases} \frac{1}{2}\left \langle w,w \right \rangle + C\sum_{i=1}^{l}\xi_{i} \rightarrow \underset{w, w_{0}, \xi}{\min}; \\ y_{i}(\left \langle w, x_{i} \right \rangle - w_{0}) \geqslant 1 - \xi_{i}, & i = \overline{1,l}; \\ \xi_{i} \geqslant 0 , & i = \overline{1,l}. \end{cases}" /></a>
   
+  *C* - (гиперпараметр) положительная константа, которая позволяет находить компромисс между максимизацией ширины разделяющей полосы и минимизацией суммарной ошибки. Ее обычно выбирают по критерию скользящего контроля.
+  
   Далее решаем двойственную задачу поиска седловой точки функции Лагранжа, которая эквивалента обобщенной задаче.     
  В итоге **алгоритм классификации** имеет вид: 
  
@@ -829,8 +835,24 @@ PlugIn <- function(mu1, sigma1, mu2, sigma2){
  
  Введем понятие **ядра**. Функция **K** - **ядро**, если её можно представить <a href="https://www.codecogs.com/eqnedit.php?latex=K(x,&space;{x}')&space;=&space;\left&space;\langle&space;\psi(x),&space;\psi({x}')&space;\right&space;\rangle" target="_blank"><img src="https://latex.codecogs.com/gif.latex?K(x,&space;{x}')&space;=&space;\left&space;\langle&space;\psi(x),&space;\psi({x}')&space;\right&space;\rangle" title="K(x, {x}') = \left \langle \psi(x), \psi({x}') \right \rangle" /></a> при некотором отображении <a href="https://www.codecogs.com/eqnedit.php?latex=\psi(x):&space;X&space;\rightarrow&space;H" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\psi(x):&space;X&space;\rightarrow&space;H" title="\psi(x): X \rightarrow H" /></a>, **H** - пр-во со скалярным произведением. 
  
- И заменить  скалярное произведение на ядро. 
+ И заменить  скалярное произведение на ядро. Далее перенумеруем объекты так, чтобы первые *h* объектов были опорными и получим:
  
+ <a href="https://www.codecogs.com/eqnedit.php?latex=a(x)&space;=\mathrm{sign}&space;\left&space;(&space;\sum_{i=1}^{h}&space;\lambda_{i}&space;y_{i}&space;K(x_{i},&space;x)&space;-&space;w_{0}&space;\right&space;)." target="_blank"><img src="https://latex.codecogs.com/gif.latex?a(x)&space;=\mathrm{sign}&space;\left&space;(&space;\sum_{i=1}^{h}&space;\lambda_{i}&space;y_{i}&space;K(x_{i},&space;x)&space;-&space;w_{0}&space;\right&space;)." title="a(x) =\mathrm{sign} \left ( \sum_{i=1}^{h} \lambda_{i} y_{i} K(x_{i}, x) - w_{0} \right )." /></a>
+ 
+**Преимущества SVM**
+
++ Задача квадратичного программирования имеет единственное решение.
++ Автоматически определяется сложность суперпозиции — число нейронов первого слоя, равное числу опорных векторов.
++ Максимизация зазора между классами улучшает обобщающую способность.
+
+**Недостатки SVM**
+
++ Неустойчивость к шуму в исходных данных. Объекты-выбросы являются опорными и существенно влияют на результат обучения
++ До сих пор не разработаны общие методы подбора ядер под конкретную задачу.
++ Подбор параметра *C* требует многократного решения задачи.
+
+
+
  
  
  
