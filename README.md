@@ -19,7 +19,8 @@
   + [Наивный нормальный байесовский классификатор](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BD%D0%B0%D0%B8%D0%B2%D0%BD%D1%8B%D0%B9-%D0%BD%D0%BE%D1%80%D0%BC%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9-%D0%B1%D0%B0%D0%B9%D0%B5%D1%81%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D1%80)
   + [Подстановочный алгоритм (plug-in)](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BF%D0%BE%D0%B4%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BE%D1%87%D0%BD%D1%8B%D0%B9-%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC-plug-in)
   + [Линейный дискриминант Фишера - ЛДФ]()
-+[Линейные алгоритмы классификации](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BB%D0%B8%D0%BD%D0%B5%D0%B9%D0%BD%D1%8B%D0%B5-%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC%D1%8B-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D0%B8)
+  
++ [Линейные алгоритмы классификации](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BB%D0%B8%D0%BD%D0%B5%D0%B9%D0%BD%D1%8B%D0%B5-%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC%D1%8B-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D0%B8)
   +[Метод опорных векторов](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-%D0%BE%D0%BF%D0%BE%D1%80%D0%BD%D1%8B%D1%85-%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%BE%D0%B2-svm)
 
 # Метрические алгоритмы классификации #
@@ -800,7 +801,7 @@ PlugIn <- function(mu1, sigma1, mu2, sigma2){
 ## Метод опорных векторов (SVM) ##
  Метод опорных объектов в настоящее время считается одним из самых лучших методом классификации. Данный метод основывается на построении оптимальной разделяющей гиперплоскости. Положение гиперплоскости зависит от небольшого числа параметров - опорных векторов выборки. 
   
-  + Если выборка **линейное разделима** и функционал числа ошибок 
+  + Если выборка **линейно разделима** и функционал числа ошибок 
   <a href="https://www.codecogs.com/eqnedit.php?latex=Q(w,&space;w_{0})&space;=&space;\sum_{i=1}^{l}\left&space;[&space;y_{i}&space;(&space;\left&space;\langle&space;w,&space;x_{i}&space;\right&space;\rangle&space;-&space;w_{0})&space;\leqslant&space;0&space;\right&space;]" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Q(w,&space;w_{0})&space;=&space;\sum_{i=1}^{l}\left&space;[&space;y_{i}&space;(&space;\left&space;\langle&space;w,&space;x_{i}&space;\right&space;\rangle&space;-&space;w_{0})&space;\leqslant&space;0&space;\right&space;]" title="Q(w, w_{0}) = \sum_{i=1}^{l}\left [ y_{i} ( \left \langle w, x_{i} \right \rangle - w_{0}) \leqslant 0 \right ]" /></a>
 
 принимает нулевое значение, тогда разделяющая гиперплоскоть не единственная.  
