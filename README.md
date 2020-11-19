@@ -787,7 +787,9 @@ estSigma <- function(objects, mu){
 
 ```
 
-<img src = "https://user-images.githubusercontent.com/71149650/99704989-2fd18800-2aaa-11eb-9f1b-964a7ef03625.png" width = "550" />
+### Пример работы подстановочного алгоритма ###
+
+<img src = "https://user-images.githubusercontent.com/71149650/99705321-a1a9d180-2aaa-11eb-85e3-41641f8f5b33.png" width = "600" />
 
 
 ### Возможные варианты разделяющей кривой ###
