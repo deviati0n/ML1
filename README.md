@@ -333,11 +333,11 @@ marginF <- function(point, xl, k){
 
 ### График отступов для объектов относительно KNN ###
 
-<img src="https://user-images.githubusercontent.com/71149650/96899557-ba1dd080-1499-11eb-93ab-2ecaa4d23d75.png"  />
+<img src="https://user-images.githubusercontent.com/71149650/96899557-ba1dd080-1499-11eb-93ab-2ecaa4d23d75.png" width = "550" />
 
 ### Выборка ирисов фишера без шумовых объектов ###
 
-<img src="https://user-images.githubusercontent.com/71149650/96902300-06b6db00-149d-11eb-8432-40b27d7d83c6.png"  />
+<img src="https://user-images.githubusercontent.com/71149650/96902300-06b6db00-149d-11eb-8432-40b27d7d83c6.png"  width = "550"/>
 
 **Алгоритм STOLP** разбивает обучающие объеты выборки на три категории: шумовые, неинформативные и эталонные. Таким образом, алгоритм производит сжатие выборки.
 
@@ -425,7 +425,7 @@ stolpF <- function(xl, delta, miss, algK = KNN, algM = marginF ) {
 
 ### Карта классификации ирисов фишера по эталонным объектам ###
 
-<img src = "https://user-images.githubusercontent.com/71149650/96970068-cf3b4380-151b-11eb-90b7-fbf9a11437f5.png" />
+<img src = "https://user-images.githubusercontent.com/71149650/96970068-cf3b4380-151b-11eb-90b7-fbf9a11437f5.png" width = "550" />
 
 <table>
     <tr>
@@ -545,7 +545,7 @@ LOO <- function(xl, alg = KWNN ){
 }  
 ```
 
-<img src="https://user-images.githubusercontent.com/71149650/95449907-1945f600-096e-11eb-9310-ea6a8523d001.png" />
+<img src="https://user-images.githubusercontent.com/71149650/95449907-1945f600-096e-11eb-9310-ea6a8523d001.png" width = "800"/>
 
 ### Реализация скользящего контроля LOO для [парзеновское окно](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-%D0%BF%D0%B0%D1%80%D0%B7%D0%B5%D0%BD%D0%BE%D0%B2%D1%81%D0%BA%D0%BE%D0%B3%D0%BE-%D0%BE%D0%BA%D0%BD%D0%B0) ###
 В данной функции идет поиск оптимального **h** - радиус окна.
@@ -699,7 +699,7 @@ LOO <- function(xl, alg = Parz){
 ## Наивный нормальный байесовский классификатор ##
 Данный метод основывается на том, что объекты описываются **n** статистически независимыми признаками. Это предположение существенно облегчает задачу, так как оценить **n** одномерных плотностей легче, чем одну **n**-мерную плотность.
  
-**Оценка приорных вероятностей класса** имеет вид:
+**Оценка априорных вероятностей класса** имеет вид:
 <a href="https://www.codecogs.com/eqnedit.php?latex=\hat{P}_{y}&space;=&space;\frac{\left&space;|&space;X_{y}^{l}\right&space;|}{l}&space;\qquad&space;y&space;\in&space;Y" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\hat{P}_{y}&space;=&space;\frac{\left&space;|&space;X_{y}^{l}\right&space;|}{l}&space;\qquad&space;y&space;\in&space;Y" title="\hat{P}_{y} = \frac{\left | X_{y}^{l}\right |}{l} \qquad y \in Y" /></a> 
 
 **Эмпирическая оценка плотности распределения** имеет вид:
@@ -737,6 +737,15 @@ naiveBC <- function(x, Py, sigma, mu, l = c(1, 1, 1)){
   
 }
 ```
+
+### Работа НБК на ирисах Фишера с различными "лямбда" ###
+
+
+| ![](https://user-images.githubusercontent.com/71149650/99665352-96d74880-2a7a-11eb-9764-f2d76cd446bf.png) | ![](https://user-images.githubusercontent.com/71149650/99666659-511b7f80-2a7c-11eb-9edd-ac0ee444d372.png) |
+| - | - |
+| λ = (1, 1, 1) | λ = (39, 1, 1) |
+| ![](https://user-images.githubusercontent.com/71149650/99666774-7e682d80-2a7c-11eb-990d-47253cbe2939.png) | ![](https://user-images.githubusercontent.com/71149650/99666870-9f308300-2a7c-11eb-97c2-fbd384dde914.png) |
+| λ = (1, 43, 1) | λ = (1, 1, 51) |
 
 
 
