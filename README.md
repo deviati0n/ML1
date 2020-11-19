@@ -758,6 +758,7 @@ naiveBC <- function(x, Py, sigma, mu, l = c(1, 1, 1)){
 <a href="https://www.codecogs.com/eqnedit.php?latex=\mu&space;_{y}&space;=&space;\frac{1}{l_{y}}\sum_{x_{i}:y_{i}=y}x_{i}&space;\qquad&space;\Sigma_{y}&space;=&space;\frac{1}{l_{y}&space;-&space;1}\sum_{x_{i}:y_{i}=y}(x_{i}&space;-&space;\mu&space;_{y})(x_{i}&space;-&space;\mu&space;_{y})^{T}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mu&space;_{y}&space;=&space;\frac{1}{l_{y}}\sum_{x_{i}:y_{i}=y}x_{i}&space;\qquad&space;\Sigma_{y}&space;=&space;\frac{1}{l_{y}&space;-&space;1}\sum_{x_{i}:y_{i}=y}(x_{i}&space;-&space;\mu&space;_{y})(x_{i}&space;-&space;\mu&space;_{y})^{T}" title="\mu _{y} = \frac{1}{l_{y}}\sum_{x_{i}:y_{i}=y}x_{i} \qquad \Sigma_{y} = \frac{1}{l_{y} - 1}\sum_{x_{i}:y_{i}=y}(x_{i} - \mu _{y})(x_{i} - \mu _{y})^{T}" /></a>
 
 
+
 ``` r
 
 estMu <- function(objects){
