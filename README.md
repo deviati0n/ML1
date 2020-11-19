@@ -18,7 +18,7 @@
   + [Линии уровня нормального распределения](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BB%D0%B8%D0%BD%D0%B8%D0%B8-%D1%83%D1%80%D0%BE%D0%B2%D0%BD%D1%8F-%D0%BD%D0%BE%D1%80%D0%BC%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B3%D0%BE-%D1%80%D0%B0%D1%81%D0%BF%D1%80%D0%B5%D0%B4%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F)
   + [Наивный нормальный байесовский классификатор](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BD%D0%B0%D0%B8%D0%B2%D0%BD%D1%8B%D0%B9-%D0%BD%D0%BE%D1%80%D0%BC%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9-%D0%B1%D0%B0%D0%B9%D0%B5%D1%81%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%82%D0%BE%D1%80)
   + [Подстановочный алгоритм (plug-in)](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BF%D0%BE%D0%B4%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BE%D1%87%D0%BD%D1%8B%D0%B9-%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC-plug-in)
-  + [Линейный дискриминант Фишера - ЛДФ]()
+  + [Линейный дискриминант Фишера - ЛДФ](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BB%D0%B8%D0%BD%D0%B5%D0%B9%D0%BD%D1%8B%D0%B9-%D0%B4%D0%B8%D1%81%D0%BA%D1%80%D0%B8%D0%BC%D0%B8%D0%BD%D0%B0%D0%BD%D1%82-%D1%84%D0%B8%D1%88%D0%B5%D1%80%D0%B0)
   
 + [Линейные алгоритмы классификации](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BB%D0%B8%D0%BD%D0%B5%D0%B9%D0%BD%D1%8B%D0%B5-%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC%D1%8B-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D0%B8)
   + [Метод опорных векторов](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-%D0%BE%D0%BF%D0%BE%D1%80%D0%BD%D1%8B%D1%85-%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%BE%D0%B2-svm)
@@ -815,7 +815,7 @@ PlugIn <- function(mu1, sigma1, mu2, sigma2){
  где <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\hat{\mu}_{y_{i}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\hat{\mu}_{y_{i}}" title="\hat{\mu}_{y_{i}}" /></a> - векторы средних значение классов, *l* - кол-во объектов в обучающей выборке, |*Y*| - кол-во классов в обучающей выборке. 
  
  
- Для двухклассовой задачи ЛДФ разделяющая гиперплоскость имеет вид: <a href="https://www.codecogs.com/eqnedit.php?latex=\vec{w}&space;\cdot&space;\vec{x}&space;=&space;c" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\vec{w}&space;\cdot&space;\vec{x}&space;=&space;c" title="\vec{w} \cdot \vec{x} = c" /></a> 
+ Для двухклассовой задачи ЛДФ **разделяющая гиперплоскость** имеет вид: <a href="https://www.codecogs.com/eqnedit.php?latex=\vec{w}&space;\cdot&space;\vec{x}&space;=&space;c" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\vec{w}&space;\cdot&space;\vec{x}&space;=&space;c" title="\vec{w} \cdot \vec{x} = c" /></a> 
  
  где  <a href="https://www.codecogs.com/eqnedit.php?latex=\overrightarrow{w}&space;=&space;{\Sigma}^{-1}&space;(\mu_{1}&space;-&space;\mu_{2})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\overrightarrow{w}&space;=&space;{\Sigma}^{-1}&space;(\mu_{1}&space;-&space;\mu_{2})" title="\overrightarrow{w} = {\Sigma}^{-1} (\mu_{1} - \mu_{2})" /></a>,
  
@@ -855,7 +855,7 @@ c <- ((mu1 + mu2) / 2) %*% w
 
 ```
 ### Пример работы ЛДФ ###
- <img src = "https://user-images.githubusercontent.com/71149650/99691895-c138fe00-2a9a-11eb-9f11-a4cf46c0672b.png" width = "600"/>
+ <img src = "https://user-images.githubusercontent.com/71149650/99691895-c138fe00-2a9a-11eb-9f11-a4cf46c0672b.png" width = "700"/>
 
 
 # Линейные алгоритмы классификации #
