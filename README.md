@@ -804,6 +804,59 @@ PlugIn <- function(mu1, sigma1, mu2, sigma2){
 
 <img src="https://user-images.githubusercontent.com/71149650/98244981-53acae00-1f81-11eb-8c2b-a0db240c4a85.png" width="550"/>  
 
+## Линейный дискриминант Фишера ###
+
+В основе данного метода лежит гипотеза, что матрицы ковариаций классов **равны**. Данная эвристика позволяет повысить устойчивость ковариационной матрицы и упростить алгоритим обучения. 
+
+Принятая гипотеза, позволяет вычислить некоторую "среднюю" матрицу ковариации, используя всю выборку:
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\Sigma&space;=&space;\frac{1}{l&space;-&space;|Y|}&space;\sum_{i=1}^{l}(x_{i}&space;-&space;\hat{\mu}&space;_{y_{i}})(x_{i}&space;-&space;\hat{\mu}&space;_{y_{i}})^{T}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\Sigma&space;=&space;\frac{1}{l&space;-&space;|Y|}&space;\sum_{i=1}^{l}(x_{i}&space;-&space;\hat{\mu}&space;_{y_{i}})(x_{i}&space;-&space;\hat{\mu}&space;_{y_{i}})^{T}" title="\Sigma = \frac{1}{l - |Y|} \sum_{i=1}^{l}(x_{i} - \hat{\mu} _{y_{i}})(x_{i} - \hat{\mu} _{y_{i}})^{T}" /></a>
+ 
+ где <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\hat{\mu}_{y_{i}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\hat{\mu}_{y_{i}}" title="\hat{\mu}_{y_{i}}" /></a> - векторы средних значение классов, *l* - кол-во объектов в обучающей выборке, |*Y*| - кол-во классов в обучающей выборке. 
+ 
+ 
+ Для двухклассовой задачи ЛДФ разделяющая гиперплоскость имеет вид: <a href="https://www.codecogs.com/eqnedit.php?latex=\vec{w}&space;\cdot&space;\vec{x}&space;=&space;c" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\vec{w}&space;\cdot&space;\vec{x}&space;=&space;c" title="\vec{w} \cdot \vec{x} = c" /></a> 
+ 
+ где  <a href="https://www.codecogs.com/eqnedit.php?latex=\overrightarrow{w}&space;=&space;{\Sigma}^{-1}&space;(\mu_{1}&space;-&space;\mu_{2})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\overrightarrow{w}&space;=&space;{\Sigma}^{-1}&space;(\mu_{1}&space;-&space;\mu_{2})" title="\overrightarrow{w} = {\Sigma}^{-1} (\mu_{1} - \mu_{2})" /></a>,
+ 
+ <a href="https://www.codecogs.com/eqnedit.php?latex=c&space;=&space;\frac{1}{2}(\mu_{1}&space;&plus;&space;\mu_{2})&space;\cdot&space;\vec{w}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?c&space;=&space;\frac{1}{2}(\mu_{1}&space;&plus;&space;\mu_{2})&space;\cdot&space;\vec{w}" title="c = \frac{1}{2}(\mu_{1} + \mu_{2}) \cdot \vec{w}" /></a>
+ 
+### Программная реализация ЛДФ ###
+
+``` r
+LDF <- function(objects1, objects2, mu1, mu2){
+
+  sigma1 <- matrix(0, dim(objects1)[2], dim(objects1)[2])
+  sigma2 <- matrix(0, dim(objects2)[2], dim(objects2)[2])
+  
+  for (i in 1:dim(objects1)[1]) {
+    
+    sigma1 <- sigma1 + (t(objects1[i,] - mu1) %*% (objects1[i,] - mu1))
+    
+  }
+  sigma1 <- sigma1  / ((dim(objects1)[1]))
+  
+  for (i in 1:dim(objects2)[1]) {
+    
+    sigma2 <- sigma2 + (t(objects2[i,] - mu2) %*% (objects2[i,] - mu2))
+    
+  }
+  
+  sigma2 <- sigma2  / ((dim(objects2)[1]))
+  
+  return(sigma1 + sigma2)
+  
+}
+
+...
+
+w <- solve(sigma) %*% t(mu1 - mu2)
+c <- ((mu1 + mu2) / 2) %*% w
+
+```
+### Пример работы ЛДФ ###
+ <img src = "https://user-images.githubusercontent.com/71149650/99691895-c138fe00-2a9a-11eb-9f11-a4cf46c0672b.png" width = "600"/>
+
 
 # Линейные алгоритмы классификации #
 
