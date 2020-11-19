@@ -757,32 +757,38 @@ naiveBC <- function(x, Py, sigma, mu, l = c(1, 1, 1)){
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\mu&space;_{y}&space;=&space;\frac{1}{l_{y}}\sum_{x_{i}:y_{i}=y}x_{i}&space;\qquad&space;\Sigma_{y}&space;=&space;\frac{1}{l_{y}&space;-&space;1}\sum_{x_{i}:y_{i}=y}(x_{i}&space;-&space;\mu&space;_{y})(x_{i}&space;-&space;\mu&space;_{y})^{T}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mu&space;_{y}&space;=&space;\frac{1}{l_{y}}\sum_{x_{i}:y_{i}=y}x_{i}&space;\qquad&space;\Sigma_{y}&space;=&space;\frac{1}{l_{y}&space;-&space;1}\sum_{x_{i}:y_{i}=y}(x_{i}&space;-&space;\mu&space;_{y})(x_{i}&space;-&space;\mu&space;_{y})^{T}" title="\mu _{y} = \frac{1}{l_{y}}\sum_{x_{i}:y_{i}=y}x_{i} \qquad \Sigma_{y} = \frac{1}{l_{y} - 1}\sum_{x_{i}:y_{i}=y}(x_{i} - \mu _{y})(x_{i} - \mu _{y})^{T}" /></a>
 
-С помощью данного алгоритма можно получить **кривую**, которая будет **разделять классы**.
 
-### Получение коэффициентов алгоритма plug-in ###
 ``` r
 
-PlugIn <- function(mu1, sigma1, mu2, sigma2){
-      
-  # Уравнение имеет вид : a*x1^2 + b*x1*x2 + c*x2^2 + d*x1 + e*x2 + f = 0 
+estMu <- function(objects){
+  mu <- matrix(NA, 1, dim(objects)[2])
   
-  alpha <- solve(sigma1) - solve(sigma2)
-  a <- alpha[1, 1]
-  b <- 2 * alpha[1, 2]
-  c <- alpha[2, 2]
+  for (i in 1:dim(objects)[2]) {
+    
+    mu[1, i] = mean(objects[, i])
+    
+  }
+
+  return(mu)
+}
+
+estSigma <- function(objects, mu){
   
-  beta <- solve(sigma1) %*% t(mu1) - solve(sigma2) %*% t(mu2)
-  d <- -2 * beta[1, 1]
-  e <- -2 * beta[2, 1]
+  sigma <- matrix(0, dim(objects)[2], dim(objects)[2])
   
+  for (i in 1:dim(objects)[1]) {
+
+    sigma <- sigma + (t(objects[i,] - mu) %*% (objects[i,] - mu) )  
+    
+  }
   
-  f <- log( abs(det(sigma1) ) ) - log( abs(det(sigma2) ) ) + mu1 %*% solve(sigma1) %*% t(mu1) - mu2 %*% solve(sigma2) %*% t(mu2);
-  
-  return( c(a, b, c, d, e, f))
-  
+  return(sigma / (dim(objects)[1] - 2))
 }
 
 ```
+
+<img src = "https://user-images.githubusercontent.com/71149650/99704989-2fd18800-2aaa-11eb-9f1b-964a7ef03625.png" width = "550" />
+
 
 ### Возможные варианты разделяющей кривой ###
 
