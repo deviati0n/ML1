@@ -833,35 +833,42 @@ estSigma <- function(objects, mu){
 ### Программная реализация ЛДФ ###
 
 ``` r
-LDF <- function(objects1, objects2, mu1, mu2){
-
-  sigma1 <- matrix(0, dim(objects1)[2], dim(objects1)[2])
-  sigma2 <- matrix(0, dim(objects2)[2], dim(objects2)[2])
+LDF <- function(Py, x, objects1, objects2, mu1, mu2, l = c(1, 1)){
   
-  for (i in 1:dim(objects1)[1]) {
+  mu <- rbind(mu1, mu2) 
     
-    sigma1 <- sigma1 + (t(objects1[i,] - mu1) %*% (objects1[i,] - mu1))
+  Ver <- rep(0, 2)
+
+
+  sigma <- ldfSIGMA(objects1, objects2, mu1, mu2)
+  
+  for (i in 1:2) {
+    
+    Ver[i] <- Py[i] * l[i]
+    Ver[i] <- Ver[i] * ( t(x) %*% solve(sigma) %*% mu[i, ] + (-1/2) * t(mu[i,]) %*% solve(sigma) %*% mu[i,] + log2(pi) )
     
   }
-  
-  for (i in 1:dim(objects2)[1]) {
-    
-    sigma2 <- sigma2 + (t(objects2[i,] - mu2) %*% (objects2[i,] - mu2))
-    
-  }
-  
 
-  return((sigma1 + sigma2) / (dim(objects1)[1] + dim(objects2)[1] - 2))
+  return(which.max(Ver))
   
 }
 ...
 
+# Значения для разделяющей прямой
+sigma <- ldfSIGMA(objectsOfFirstClass, objectsOfSecondClass, mu1, mu2)
 w <- solve(sigma) %*% t(mu1 - mu2)
 c <- ((mu1 + mu2) / 2) %*% w
 
 ```
 ### Пример работы ЛДФ ###
- <img src = "https://user-images.githubusercontent.com/71149650/99691895-c138fe00-2a9a-11eb-9f11-a4cf46c0672b.png" width = "700"/>
+
+| ![](https://user-images.githubusercontent.com/71149650/99768880-9096aa00-2b16-11eb-8c20-c13a8e1c699d.png) | ![](https://user-images.githubusercontent.com/71149650/99768817-7b218000-2b16-11eb-9b13-b5a95c2815cd.png) |
+| - | - |
+| λ = (5, 1) | λ = (1, 3) |
+
+ | <img src = "https://user-images.githubusercontent.com/71149650/99767248-ca19e600-2b13-11eb-846c-577e0afca38a.png" width = "700"/> |
+ | - |
+ | λ = (1, 1) |
  
  ### ЛДФ и Plug-in ###
  
