@@ -714,6 +714,18 @@ LOO <- function(xl, alg = Parz){
 
 ### Реализация алгоритма НБК ###
 ``` r
+
+# Оценка mu И sigma
+for (i in 1:m) {
+  for (j in 1:n) {
+    temp <- xl[xl[,3] == classes[i],][,j] 
+    
+    mu[i, j] <- mean(temp)
+    sigma[i, j] <- sqrt(var(temp))
+  }
+}
+
+
 # Параметры: входная точка, априорные вероятности классов, матрица ковариации, мат ожидание и величина потери для каждого класса
 naiveBC <- function(x, Py, sigma, mu, l = c(1, 1, 1)){
   
