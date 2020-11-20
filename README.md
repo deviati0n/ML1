@@ -717,7 +717,6 @@ LOO <- function(xl, alg = Parz){
 # Параметры: входная точка, априорные вероятности классов, матрица ковариации, мат ожидание и величина потери для каждого класса
 naiveBC <- function(x, Py, sigma, mu, l = c(1, 1, 1)){
   
-  #Апостериорные вероятности классов
   Ver <- rep(0, dim(Py))
   
   for (i in 1:dim(Py)) {
@@ -728,6 +727,7 @@ naiveBC <- function(x, Py, sigma, mu, l = c(1, 1, 1)){
         sum <- sum + log(plotn(x[j], mu[i, j], sigma[i, j]))
 
       }
+      
     # Находим плотность классов в заданной точке
     Ver[i] <- log(l[i] * Py[i]) + sum
   }
