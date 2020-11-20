@@ -706,7 +706,7 @@ LOO <- function(xl, alg = Parz){
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\widehat{{p}_{yj}}(\xi&space;)&space;=&space;\frac{1}{\sigma&space;_{yj}\sqrt{2\pi}}&space;\exp\left&space;(&space;-\frac{(\xi&space;-\mu&space;_{yj})^{2}}{2\sigma&space;_{yj}^{2}}&space;\right&space;),&space;\qquad&space;y&space;\in&space;Y,&space;\qquad&space;j&space;=&space;\overline{1,n}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\widehat{{p}_{yj}}(\xi&space;)&space;=&space;\frac{1}{\sigma&space;_{yj}\sqrt{2\pi}}&space;\exp\left&space;(&space;-\frac{(\xi&space;-\mu&space;_{yj})^{2}}{2\sigma&space;_{yj}^{2}}&space;\right&space;),&space;\qquad&space;y&space;\in&space;Y,&space;\qquad&space;j&space;=&space;\overline{1,n}" title="\widehat{{p}_{yj}}(\xi ) = \frac{1}{\sigma _{yj}\sqrt{2\pi}} \exp\left ( -\frac{(\xi -\mu _{yj})^{2}}{2\sigma _{yj}^{2}} \right ), \qquad y \in Y, \qquad j = \overline{1,n}" /></a>
 
-Алгоритм **НБК** имеет вид:
+Подставим описанные выше оценки и получим **НБК**:
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=a(x)&space;=&space;\arg&space;\max_{y\in&space;Y}&space;\left&space;(&space;\ln&space;\lambda_{y}&space;\hat{P}_{y}&space;&plus;&space;\sum_{j&space;=&space;1}^{n}&space;\ln&space;\hat{p}_{yj}&space;(\xi&space;_{j})\right&space;)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?a(x)&space;=&space;\arg&space;\max_{y\in&space;Y}&space;\left&space;(&space;\ln&space;\lambda_{y}&space;\hat{P}_{y}&space;&plus;&space;\sum_{j&space;=&space;1}^{n}&space;\ln&space;\hat{p}_{yj}&space;(\xi&space;_{j})\right&space;)" title="a(x) = \arg \max_{y\in Y} \left ( \ln \lambda_{y} \hat{P}_{y} + \sum_{j = 1}^{n} \ln \hat{p}_{yj} (\xi _{j})\right )" /></a>
 
