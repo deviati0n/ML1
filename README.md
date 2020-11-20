@@ -715,13 +715,14 @@ LOO <- function(xl, alg = Parz){
 ### Реализация алгоритма НБК ###
 ``` r
 
-# Оценка mu И sigma
+# Оценка mu и sigma
 for (i in 1:m) {
   for (j in 1:n) {
     temp <- xl[xl[,3] == classes[i],][,j] 
     
     mu[i, j] <- mean(temp)
     sigma[i, j] <- sqrt(var(temp))
+
   }
 }
 
@@ -735,6 +736,7 @@ naiveBC <- function(x, Py, sigma, mu, l = c(1, 1, 1)){
       sum <- 0
       
       for (j in 1:length(x)) {
+
         # Считаем вторую часть формулы (сумму)
         sum <- sum + log(plotn(x[j], mu[i, j], sigma[i, j]))
 
