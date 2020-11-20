@@ -761,36 +761,40 @@ naiveBC <- function(x, Py, sigma, mu, l = c(1, 1, 1)){
 
 ``` r
 
-estMu <- function(objects){
-  mu <- matrix(NA, 1, dim(objects)[2])
+Plugin <- function(x, Py, mu1, sigma1, mu2, sigma2, l = c(3, 1)){
   
-  for (i in 1:dim(objects)[2]) {
+  Ver <- rep(0, 2)
+  mu <- rbind(mu1, mu2)
+  
+  for (i in 1:2) {
     
-    mu[1, i] = mean(objects[, i])
+    Ver[i] <- Py[i] * l[i]
     
-  }
-
-  return(mu)
-}
-
-estSigma <- function(objects, mu){
-  
-  sigma <- matrix(0, dim(objects)[2], dim(objects)[2])
-  
-  for (i in 1:dim(objects)[1]) {
-
-    sigma <- sigma + (t(objects[i,] - mu) %*% (objects[i,] - mu) )  
+    if (i == 1) {
+      sigma <- sigma1
+    }
+    else{
+      sigma <- sigma2
+    }
+    
+    Ver[i] <- Ver[i] * (-(t(x - mu[i,]) %*% solve(sigma) %*% (x - mu[i, ])) / 2 - log(det(sigma))/2 )
     
   }
   
-  return(sigma / (dim(objects)[1] - 2))
+  return(which.max(Ver))
 }
 
 ```
 
 ### Пример работы подстановочного алгоритма ###
 
-<img src = "https://user-images.githubusercontent.com/71149650/99705321-a1a9d180-2aaa-11eb-85e3-41641f8f5b33.png" width = "600" />
+| ![](https://user-images.githubusercontent.com/71149650/99770153-76f66200-2b18-11eb-9c9f-20a3a1d37aaa.png) | ![](https://user-images.githubusercontent.com/71149650/99770106-634afb80-2b18-11eb-81a9-9af870475ee0.png) |
+| - | - |
+| λ = (3, 1) | λ = (1, 3) |
+
+ | <img src = "https://user-images.githubusercontent.com/71149650/99770043-50382b80-2b18-11eb-9aec-2ad2bd2cc924.png" width = "700"/> |
+ | - |
+ | λ = (1, 1) |
 
 
 ### Возможные варианты разделяющей кривой ###
