@@ -898,10 +898,19 @@ c <- ((mu1 + mu2) / 2) %*% w
 
 
 # Линейные алгоритмы классификации #
+Линейные модели широко используются в машинном обучении благодаря их относительной простоте, в некоторых случаях хорошей интерпретируемости и наличию глубоко проработанных численных методов.
+
+Рассмотрим задачу классификации с двумя классами, <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;Y&space;=&space;\left&space;\{&space;-1,&space;&plus;1&space;\right&space;\}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;Y&space;=&space;\left&space;\{&space;-1,&space;&plus;1&space;\right&space;\}" title="Y = \left \{ -1, +1 \right \}" /></a>.
 
 Линейный классификатор имеет вид:
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=a(x)&space;=\mathrm{sign}&space;\left&space;(&space;\left&space;\langle&space;w,&space;x&space;\right&space;\rangle&space;-&space;w_{0}&space;\right&space;)&space;=&space;\mathrm{sign}&space;\left&space;(&space;\sum_{j=1}^{n}&space;w_{j}&space;f_{j}(x)&space;-&space;w_{0}&space;\right&space;)." target="_blank"><img src="https://latex.codecogs.com/gif.latex?a(x)&space;=\mathrm{sign}&space;\left&space;(&space;\left&space;\langle&space;w,&space;x&space;\right&space;\rangle&space;-&space;w_{0}&space;\right&space;)&space;=&space;\mathrm{sign}&space;\left&space;(&space;\sum_{j=1}^{n}&space;w_{j}&space;f_{j}(x)&space;-&space;w_{0}&space;\right&space;)." title="a(x) =\mathrm{sign} \left ( \left \langle w, x \right \rangle - w_{0} \right ) = \mathrm{sign} \left ( \sum_{j=1}^{n} w_{j} f_{j}(x) - w_{0} \right )." /></a>
+
+Величина <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;M_{i}(w)&space;=&space;y_{i}f(x_{i},&space;w)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;M_{i}(w)&space;=&space;y_{i}f(x_{i},&space;w)" title="M_{i}(w) = y_{i}f(x_{i}, w)" /></a> - **отступ** объекта <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;x_{i}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;x_{i}" title="x_{i}" /></a>, относительно алгоримтма линейной классификации. 
+
+## Метод стохастического градиента ##
+
+### ADALINE ###
 
 ## Метод опорных векторов (SVM) ##
  Метод опорных объектов в настоящее время считается одним из самых лучших методом классификации. Данный метод основывается на построении оптимальной разделяющей гиперплоскости. 
