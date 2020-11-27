@@ -934,7 +934,7 @@ c <- ((mu1 + mu2) / 2) %*% w
 
 Рассмотрим случай, когда функций потерь квадратична:
 
-<img src = "https://user-images.githubusercontent.com/71149650/100416878-9baa8680-3090-11eb-95c2-0057a6ea688e.png" width = "200" />
+<img src = "https://user-images.githubusercontent.com/71149650/100416878-9baa8680-3090-11eb-95c2-0057a6ea688e.png" width = "175" />
 
 Тогда правило обновления весов на каждом шаге будем иметь вид:
 
@@ -1036,7 +1036,8 @@ ADALINE <- function(xl, eta = 1, lambda = 1/100) {
 <a href="https://www.codecogs.com/eqnedit.php?latex=if&space;\quad&space;\left&space;\langle&space;w,x_{i}&space;\right&space;\rangle&space;y_{i}&space;<&space;0&space;\quad&space;then&space;\quad&space;w&space;=&space;w&space;&plus;&space;\eta&space;x_{i}y_{i}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?if&space;\quad&space;\left&space;\langle&space;w,x_{i}&space;\right&space;\rangle&space;y_{i}&space;<&space;0&space;\quad&space;then&space;\quad&space;w&space;=&space;w&space;&plus;&space;\eta&space;x_{i}y_{i}" title="if \quad \left \langle w,x_{i} \right \rangle y_{i} < 0 \quad then \quad w = w + \eta x_{i}y_{i}" /></a>
 
 При этом функция потерь имеет вид:
-<img src = "https://user-images.githubusercontent.com/71149650/100417750-a534ee00-3092-11eb-9cb9-371bf65fde13.png" width = "200" />
+
+<img src = "https://user-images.githubusercontent.com/71149650/100417750-a534ee00-3092-11eb-9cb9-371bf65fde13.png" width = "175" />
 
 #### Программная реализация ####
 ``` r
