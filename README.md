@@ -917,7 +917,7 @@ c <- ((mu1 + mu2) / 2) %*% w
 
 Для этого понадобится задать некоторое начальное приближение для ***w***, затем запускается итерационный процесс, где на каждом шаге вектор ***w*** будет изменяться в направлении наиболее быстрого убывания функционала ***Q*** - направление антиградиента. 
 
-<img src = "https://user-images.githubusercontent.com/71149650/100415208-ad8a2a80-308c-11eb-9ef5-5f372251703d.png" />
+<img src = "https://user-images.githubusercontent.com/71149650/100415208-ad8a2a80-308c-11eb-9ef5-5f372251703d.png" width = "300" />
 
 Для того, чтобы улучшить качество градиентных методов использовались такие эвристики:
 + Нормализация данных.
@@ -930,7 +930,16 @@ c <- ((mu1 + mu2) / 2) %*% w
 
 ### ADALINE ###
 
-Рассмотрим случай, когда функций потерь квадратична, 
+Рассмотрим случай, когда функций потерь квадратична:
+``` r
+LossFunc <- function(x){
+  return((x - 1)^2)
+}
+```
+Тогда правило обновления весов на каждом шаге будем иметь вид:
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=w&space;:=&space;w&space;=-&space;\eta&space;(&space;\left&space;\langle&space;w,&space;x_{i}&space;\right&space;\rangle&space;-&space;y_{i})x_{i}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w&space;:=&space;w&space;=-&space;\eta&space;(&space;\left&space;\langle&space;w,&space;x_{i}&space;\right&space;\rangle&space;-&space;y_{i})x_{i}" title="w := w =- \eta ( \left \langle w, x_{i} \right \rangle - y_{i})x_{i}" /></a>
+
 
 #### Программная реализация ####
 
@@ -1009,6 +1018,8 @@ ADALINE <- function(xl, eta = 1, lambda = 1/100) {
   return(w)
 }
 ```
+
+<img src = "https://user-images.githubusercontent.com/71149650/100412669-5d0fce80-3086-11eb-85f9-615f54c139d2.png" />
 
 ## Метод опорных векторов (SVM) ##
  Метод опорных объектов в настоящее время считается одним из самых лучших методом классификации. Данный метод основывается на построении оптимальной разделяющей гиперплоскости. 
