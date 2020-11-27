@@ -1031,7 +1031,7 @@ ADALINE <- function(xl, eta = 1, lambda = 1/100) {
 
 + Если <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;a(x_{i})&space;=&space;1,&space;y_{i}&space;=&space;-1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;a(x_{i})&space;=&space;1,&space;y_{i}&space;=&space;-1" title="a(x_{i}) = 1, y_{i} = -1" /></a>, то вектор весов уменьшается <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;w&space;=&space;w&space;-&space;\eta&space;x_{i}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;w&space;=&space;w&space;-&space;\eta&space;x_{i}" title="w = w - \eta x_{i}" /></a>
 
-Этри три случая объединяются в ***правило Хэбба***:
+Эти три случая объединяются в ***правило Хэбба***:
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=if&space;\quad&space;\left&space;\langle&space;w,x_{i}&space;\right&space;\rangle&space;y_{i}&space;<&space;0&space;\quad&space;then&space;\quad&space;w&space;=&space;w&space;&plus;&space;\eta&space;x_{i}y_{i}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?if&space;\quad&space;\left&space;\langle&space;w,x_{i}&space;\right&space;\rangle&space;y_{i}&space;<&space;0&space;\quad&space;then&space;\quad&space;w&space;=&space;w&space;&plus;&space;\eta&space;x_{i}y_{i}" title="if \quad \left \langle w,x_{i} \right \rangle y_{i} < 0 \quad then \quad w = w + \eta x_{i}y_{i}" /></a>
 
