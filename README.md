@@ -22,6 +22,7 @@
   
 + [Линейные алгоритмы классификации](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BB%D0%B8%D0%BD%D0%B5%D0%B9%D0%BD%D1%8B%D0%B5-%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC%D1%8B-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D0%B8)
   + [Метод стохастического градиента](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-%D1%81%D1%82%D0%BE%D1%85%D0%B0%D1%81%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B3%D0%BE-%D0%B3%D1%80%D0%B0%D0%B4%D0%B8%D0%B5%D0%BD%D1%82%D0%B0)
+    + [ADALINE](https://github.com/deviati0n/ML1/blob/master/README.md#adaline)
   + [Метод опорных векторов](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-%D0%BE%D0%BF%D0%BE%D1%80%D0%BD%D1%8B%D1%85-%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%BE%D0%B2-svm)
 
 # Метрические алгоритмы классификации #
@@ -931,11 +932,9 @@ c <- ((mu1 + mu2) / 2) %*% w
 ### ADALINE ###
 
 Рассмотрим случай, когда функций потерь квадратична:
-``` r
-LossFunc <- function(x){
-  return((x - 1)^2)
-}
-```
+
+<img src = "https://user-images.githubusercontent.com/71149650/100416878-9baa8680-3090-11eb-95c2-0057a6ea688e.png" width = "200" />
+
 Тогда правило обновления весов на каждом шаге будем иметь вид:
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=w&space;:=&space;w&space;=-&space;\eta&space;(&space;\left&space;\langle&space;w,&space;x_{i}&space;\right&space;\rangle&space;-&space;y_{i})x_{i}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?w&space;:=&space;w&space;=-&space;\eta&space;(&space;\left&space;\langle&space;w,&space;x_{i}&space;\right&space;\rangle&space;-&space;y_{i})x_{i}" title="w := w =- \eta ( \left \langle w, x_{i} \right \rangle - y_{i})x_{i}" /></a>
@@ -1020,6 +1019,20 @@ ADALINE <- function(xl, eta = 1, lambda = 1/100) {
 ```
 
 <img src = "https://user-images.githubusercontent.com/71149650/100412669-5d0fce80-3086-11eb-85f9-615f54c139d2.png" />
+
+### Правило Хэбба ### 
+
+При классификации <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;a(x_{i})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;a(x_{i})" title="a(x_{i})" /></a> объекта <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;x_{i}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;x_{i}" title="x_{i}" /></a> возможны три случая:
+
++ Если ответ <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;a(x_{i})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;a(x_{i})" title="a(x_{i})" /></a> совпадает с истинным ответом, то вектор весов изменять не надо
+
++ Если <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;a(x_{i})&space;=&space;-1,&space;y_{i}&space;=&space;1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;a(x_{i})&space;=&space;-1,&space;y_{i}&space;=&space;1" title="a(x_{i}) = -1, y_{i} = 1" /></a>, то вектор весов увеличивается <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;w&space;=&space;w&space;&plus;&space;\eta&space;x_{i}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;w&space;=&space;w&space;&plus;&space;\eta&space;x_{i}" title="w = w + \eta x_{i}" /></a>
+
++ Если <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;a(x_{i})&space;=&space;1,&space;y_{i}&space;=&space;-1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;a(x_{i})&space;=&space;1,&space;y_{i}&space;=&space;-1" title="a(x_{i}) = 1, y_{i} = -1" /></a>, то вектор весов уменьшается <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;w&space;=&space;w&space;-&space;\eta&space;x_{i}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;w&space;=&space;w&space;-&space;\eta&space;x_{i}" title="w = w - \eta x_{i}" /></a>
+
+Этри три случая объединяются в ***правило Хэбба***:
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=if&space;\quad&space;\left&space;\langle&space;w,x_{i}&space;\right&space;\rangle&space;y_{i}&space;<&space;0&space;\quad&space;then&space;\quad&space;w&space;=&space;w&space;&plus;&space;\eta&space;x_{i}y_{i}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?if&space;\quad&space;\left&space;\langle&space;w,x_{i}&space;\right&space;\rangle&space;y_{i}&space;<&space;0&space;\quad&space;then&space;\quad&space;w&space;=&space;w&space;&plus;&space;\eta&space;x_{i}y_{i}" title="if \quad \left \langle w,x_{i} \right \rangle y_{i} < 0 \quad then \quad w = w + \eta x_{i}y_{i}" /></a>
 
 ## Метод опорных векторов (SVM) ##
  Метод опорных объектов в настоящее время считается одним из самых лучших методом классификации. Данный метод основывается на построении оптимальной разделяющей гиперплоскости. 
