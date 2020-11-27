@@ -23,6 +23,7 @@
 + [Линейные алгоритмы классификации](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BB%D0%B8%D0%BD%D0%B5%D0%B9%D0%BD%D1%8B%D0%B5-%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC%D1%8B-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B8%D1%84%D0%B8%D0%BA%D0%B0%D1%86%D0%B8%D0%B8)
   + [Метод стохастического градиента](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-%D1%81%D1%82%D0%BE%D1%85%D0%B0%D1%81%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B3%D0%BE-%D0%B3%D1%80%D0%B0%D0%B4%D0%B8%D0%B5%D0%BD%D1%82%D0%B0)
     + [ADALINE](https://github.com/deviati0n/ML1/blob/master/README.md#adaline)
+    + [Правило Хэбба](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%BE-%D1%85%D1%8D%D0%B1%D0%B1%D0%B0)
   + [Метод опорных векторов](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-%D0%BE%D0%BF%D0%BE%D1%80%D0%BD%D1%8B%D1%85-%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%BE%D0%B2-svm)
 
 # Метрические алгоритмы классификации #
@@ -1033,6 +1034,94 @@ ADALINE <- function(xl, eta = 1, lambda = 1/100) {
 Этри три случая объединяются в ***правило Хэбба***:
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=if&space;\quad&space;\left&space;\langle&space;w,x_{i}&space;\right&space;\rangle&space;y_{i}&space;<&space;0&space;\quad&space;then&space;\quad&space;w&space;=&space;w&space;&plus;&space;\eta&space;x_{i}y_{i}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?if&space;\quad&space;\left&space;\langle&space;w,x_{i}&space;\right&space;\rangle&space;y_{i}&space;<&space;0&space;\quad&space;then&space;\quad&space;w&space;=&space;w&space;&plus;&space;\eta&space;x_{i}y_{i}" title="if \quad \left \langle w,x_{i} \right \rangle y_{i} < 0 \quad then \quad w = w + \eta x_{i}y_{i}" /></a>
+
+При этом функция потерь имеет вид:
+<img src = "https://user-images.githubusercontent.com/71149650/100417750-a534ee00-3092-11eb-9cb9-371bf65fde13.png" width = "200" />
+
+#### Программная реализация ####
+``` r
+HEBB <- function(xl, eta = 1, lambda = 1/100) {
+  count <- 0
+  w <- c(1/2, -1/2, 1/2)
+  
+  #Инициализация начальной оценки функционала Q
+  Q <- 0
+  for (i in 1:dim(xl)[1]) {
+    
+    skPr <- sum(w * xl[i,1:(dim(xl)[2] - 1)])
+    mar <- skPr *  xl[i,dim(xl)[2]]
+    
+    Q <- Q + LossFunc(mar)
+    
+  }
+  
+  ERR <- Q
+  
+  # тело цикла 
+  while (TRUE) {
+   
+    count <- count + 1 
+     
+    # отступы для всех объектов выборки
+    mars <- array(0, dim(xl)[1])
+    for (i in 1:dim(xl)[1]) {
+      
+      skPr <- sum(w * xl[i,1:(dim(xl)[2] - 1) ])
+      mars[i] <- skPr *  xl[i,dim(xl)[2]]
+      
+    }
+    
+    errI <- which(mars <= 0)
+    
+    if (length(errI) == 0 ) {
+      break
+    }
+    
+    else{
+      
+      #случайно выбираем объект с отрицательным отступом
+      randomI <- sample(errI, 1)
+      
+      skPr <- sum(w * xl[randomI,1:(dim(xl)[2] - 1) ])
+      mar <- skPr *  xl[randomI, dim(xl)[2]]
+      
+
+      #ошибка
+      err <- LossFunc(mar)
+      
+      eta <- 1 / count
+      
+      #обновление вектора весов 
+      w <- w + eta * xl[randomI,1:(dim(xl)[2] - 1) ] * xl[randomI,dim(xl)[2]]
+      
+      prevQ <- Q
+      
+      #оцениваем значение функционала 
+      Q <- (1 - lambda) * prevQ + lambda * err
+      ERR <- rbind(ERR, Q)
+      
+      #критерии для остановки
+      if ( abs(Q - prevQ) < 0.00001 ) {
+        break
+      }
+      
+      if (count > 10000) {
+        
+        break
+        
+      }
+      
+    }
+    
+  } 
+   
+  return(w)
+  
+}
+
+```
+<img src = "https://user-images.githubusercontent.com/71149650/100412777-99432f00-3086-11eb-8524-4e19c2f65c31.png" />
+
 
 ## Метод опорных векторов (SVM) ##
  Метод опорных объектов в настоящее время считается одним из самых лучших методом классификации. Данный метод основывается на построении оптимальной разделяющей гиперплоскости. 
