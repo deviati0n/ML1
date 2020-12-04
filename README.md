@@ -1230,7 +1230,7 @@ LogReg <- function(xl, eta = 1, lambda = 1/100) {
 <img src = "https://user-images.githubusercontent.com/71149650/101129117-0e2be100-3612-11eb-994f-3e93a18a4a09.png" width = "700" />
 
 #### Сравнение ADALINE, пр. Хэбба и логистической регрессии ####
-<img src = "https://user-images.githubusercontent.com/71149650/101130706-03268000-3615-11eb-887b-7d31f6b5f5ef.png" width = "1100" />
+<img src = "https://user-images.githubusercontent.com/71149650/101130706-03268000-3615-11eb-887b-7d31f6b5f5ef.png" width = "1300"/>
 
 ## Метод опорных векторов (SVM) ##
  Метод опорных объектов в настоящее время считается одним из самых лучших методом классификации. Данный метод основывается на построении оптимальной разделяющей гиперплоскости. 
