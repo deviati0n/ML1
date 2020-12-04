@@ -1223,7 +1223,7 @@ LogReg <- function(xl, eta = 1, lambda = 1/100) {
 
 <img src = "https://user-images.githubusercontent.com/71149650/101130523-aa56e780-3614-11eb-8075-1f1938f17535.png" />
 
-**Апостериорная вероятность** принадлежности произвольного объект классу можно вычислить следующим образом:
+**Апостериорную вероятность** принадлежности произвольного объект классу можно вычислить следующим образом:
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\textup{P}(y|x)&space;=&space;\sigma&space;(\left&space;\langle&space;w,&space;x&space;\right&space;\rangle&space;y)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\textup{P}(y|x)&space;=&space;\sigma&space;(\left&space;\langle&space;w,&space;x&space;\right&space;\rangle&space;y)" title="\textup{P}(y|x) = \sigma (\left \langle w, x \right \rangle y)" /></a>
 
