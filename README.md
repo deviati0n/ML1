@@ -24,7 +24,7 @@
   + [Метод стохастического градиента](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-%D1%81%D1%82%D0%BE%D1%85%D0%B0%D1%81%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B3%D0%BE-%D0%B3%D1%80%D0%B0%D0%B4%D0%B8%D0%B5%D0%BD%D1%82%D0%B0)
     + [ADALINE](https://github.com/deviati0n/ML1/blob/master/README.md#adaline)
     + [Правило Хэбба](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%BE-%D1%85%D1%8D%D0%B1%D0%B1%D0%B0)
-    + [Логистическая регрессия]()
+    + [Логистическая регрессия](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BB%D0%BE%D0%B3%D0%B8%D1%81%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F-%D1%80%D0%B5%D0%B3%D1%80%D0%B5%D1%81%D1%81%D0%B8%D1%8F)
   + [Метод опорных векторов](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-%D0%BE%D0%BF%D0%BE%D1%80%D0%BD%D1%8B%D1%85-%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%BE%D0%B2-svm)
 
 # Метрические алгоритмы классификации #
@@ -1129,7 +1129,7 @@ HEBB <- function(xl, eta = 1, lambda = 1/100) {
 
 <img src = "https://user-images.githubusercontent.com/71149650/100420902-5c803380-3098-11eb-99dd-c770c7b5e262.png" />
 
-## Логистическая регрессия ##
+### Логистическая регрессия ###
 
 В логистической регресси для того, чтобы настроить вектор весов, решается задача минимизации эмпирического риска с функцией потерь специального вида:
 
@@ -1140,7 +1140,7 @@ HEBB <- function(xl, eta = 1, lambda = 1/100) {
 <a href="https://www.codecogs.com/eqnedit.php?latex=w&space;=&space;w&space;&plus;&space;\eta&space;x_{i}y_{i}\sigma&space;(&space;-&space;\left&space;\langle&space;w,&space;x_{i}&space;\right&space;\rangle&space;y_{i})," target="_blank"><img src="https://latex.codecogs.com/gif.latex?w&space;=&space;w&space;&plus;&space;\eta&space;x_{i}y_{i}\sigma&space;(&space;-&space;\left&space;\langle&space;w,&space;x_{i}&space;\right&space;\rangle&space;y_{i})," title="w = w + \eta x_{i}y_{i}\sigma ( - \left \langle w, x_{i} \right \rangle y_{i})," /></a>
 где <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\sigma&space;-" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\sigma&space;-" title="\sigma -" /></a> сигмоидная функция <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\sigma(z)&space;=&space;\frac{1}{1&space;&plus;&space;\exp(-z)}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\sigma(z)&space;=&space;\frac{1}{1&space;&plus;&space;\exp(-z)}" title="\sigma(z) = \frac{1}{1 + \exp(-z)}" /></a>.
 
-### Программная реализация ###
+#### Программная реализация ####
 
 ``` r
 LogReg <- function(xl, eta = 1, lambda = 1/100) {
@@ -1222,6 +1222,15 @@ LogReg <- function(xl, eta = 1, lambda = 1/100) {
 ```
 
 <img src = "https://user-images.githubusercontent.com/71149650/101125569-97d7b080-360a-11eb-9ded-bd78cf48bf12.png" />
+
+Апостериорная вероятность принадлежности произвольного объект классу можно вычислить следующим образом:
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\textup{P}(y|x)&space;=&space;\sigma&space;(\left&space;\langle&space;w,&space;x&space;\right&space;\rangle&space;y)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\textup{P}(y|x)&space;=&space;\sigma&space;(\left&space;\langle&space;w,&space;x&space;\right&space;\rangle&space;y)" title="\textup{P}(y|x) = \sigma (\left \langle w, x \right \rangle y)" /></a>
+
+<img src = "https://user-images.githubusercontent.com/71149650/101129117-0e2be100-3612-11eb-994f-3e93a18a4a09.png" width = "700" />
+
+#### Сравнение ADALINE, пр. Хэбба и логистической регрессии ####
+<img src = "https://user-images.githubusercontent.com/71149650/101130076-e0479c00-3613-11eb-996e-2d531ee6334b.png" width = "1100" />
 
 ## Метод опорных векторов (SVM) ##
  Метод опорных объектов в настоящее время считается одним из самых лучших методом классификации. Данный метод основывается на построении оптимальной разделяющей гиперплоскости. 
