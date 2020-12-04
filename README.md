@@ -1221,7 +1221,7 @@ LogReg <- function(xl, eta = 1, lambda = 1/100) {
 }
 ```
 
-<img src = "https://user-images.githubusercontent.com/71149650/101125569-97d7b080-360a-11eb-9ded-bd78cf48bf12.png" />
+<img src = "https://user-images.githubusercontent.com/71149650/101130523-aa56e780-3614-11eb-8075-1f1938f17535.png" />
 
 **Апостериорная вероятность** принадлежности произвольного объект классу можно вычислить следующим образом:
 
