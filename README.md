@@ -24,6 +24,7 @@
   + [Метод стохастического градиента](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-%D1%81%D1%82%D0%BE%D1%85%D0%B0%D1%81%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B3%D0%BE-%D0%B3%D1%80%D0%B0%D0%B4%D0%B8%D0%B5%D0%BD%D1%82%D0%B0)
     + [ADALINE](https://github.com/deviati0n/ML1/blob/master/README.md#adaline)
     + [Правило Хэбба](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BF%D1%80%D0%B0%D0%B2%D0%B8%D0%BB%D0%BE-%D1%85%D1%8D%D0%B1%D0%B1%D0%B0)
+    + [Логистическая регрессия]()
   + [Метод опорных векторов](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BC%D0%B5%D1%82%D0%BE%D0%B4-%D0%BE%D0%BF%D0%BE%D1%80%D0%BD%D1%8B%D1%85-%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%BE%D0%B2-svm)
 
 # Метрические алгоритмы классификации #
@@ -1127,6 +1128,100 @@ HEBB <- function(xl, eta = 1, lambda = 1/100) {
 #### Сравнение ADALINE и пр. Хэбба ####
 
 <img src = "https://user-images.githubusercontent.com/71149650/100420902-5c803380-3098-11eb-99dd-c770c7b5e262.png" />
+
+## Логистическая регрессия ##
+
+В логистической регресси для того, чтобы настроить вектор весов, решается задача минимизации эмпирического риска с функцией потерь специального вида:
+
+<img src = "https://user-images.githubusercontent.com/71149650/101124285-c607c100-3607-11eb-9e6d-13d84e5450f2.png" width = "200" />
+
+Правило обновления весов имеет вид:
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=w&space;=&space;w&space;&plus;&space;\eta&space;x_{i}y_{i}\sigma&space;(&space;-&space;\left&space;\langle&space;w,&space;x_{i}&space;\right&space;\rangle&space;y_{i})," target="_blank"><img src="https://latex.codecogs.com/gif.latex?w&space;=&space;w&space;&plus;&space;\eta&space;x_{i}y_{i}\sigma&space;(&space;-&space;\left&space;\langle&space;w,&space;x_{i}&space;\right&space;\rangle&space;y_{i})," title="w = w + \eta x_{i}y_{i}\sigma ( - \left \langle w, x_{i} \right \rangle y_{i})," /></a>
+где <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\sigma&space;-" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\sigma&space;-" title="\sigma -" /></a> сигмоидная функция <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;\sigma(z)&space;=&space;\frac{1}{1&space;&plus;&space;\exp(-z)}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;\sigma(z)&space;=&space;\frac{1}{1&space;&plus;&space;\exp(-z)}" title="\sigma(z) = \frac{1}{1 + \exp(-z)}" /></a>.
+
+### Программная реализация ###
+
+``` r
+LogReg <- function(xl, eta = 1, lambda = 1/100) {
+  count <- 0
+  w <- c(1/2, -1/2, 1/2)
+  
+  #Инициализация начальной оценки функционала Q
+  Q <- 0
+  for (i in 1:dim(xl)[1]) {
+    
+    skPr <- sum(w * xl[i,1:(dim(xl)[2] - 1)])
+    mar <- skPr *  xl[i,dim(xl)[2]]
+    
+    Q <- Q + LossFunc(mar)
+    
+  }
+  
+  ERR <- Q
+  
+  # тело цикла 
+  while (TRUE) {
+    count <- count + 1 
+    
+    mars <- array(0, dim(xl)[1])
+    
+    # отступы для всех объектов выборки
+    for (i in 1:dim(xl)[1]) {
+      
+      skPr <- sum(w * xl[i,1:(dim(xl)[2] - 1) ])
+      mars[i] <- skPr *  xl[i,dim(xl)[2]]
+      
+    }
+    
+    errI <- which(mars <= 0)
+    
+    if (length(errI) == 0 ) {
+      break
+    }
+    
+    else{
+      
+      randomI <- sample(errI, 1)
+      
+      skPr <- sum(w * xl[randomI,1:(dim(xl)[2] - 1) ])
+      mar <- skPr *  xl[randomI, dim(xl)[2]]
+      
+      
+      #ошибка
+      err <- LossFunc(mar)
+      
+      eta <- 1 / count
+      
+      #обновление вектора весов 
+      w <- w + eta * xl[randomI,1:(dim(xl)[2] - 1) ] * xl[randomI,dim(xl)[2]] * SigmFunc(-mar)
+      
+      prevQ <- Q
+      
+      #оцениваем значение функционала 
+      Q <- (1 - lambda) * prevQ + lambda * err
+      ERR <- rbind(ERR, Q)
+      
+      #критерии для остановки
+      if ( abs(Q - prevQ) < 0.00001 ) {
+        break
+      }
+      
+      if (count > 10000) {
+        
+        break
+        
+      }
+      
+    }
+    
+  } 
+  
+  return(w)  
+}
+```
+
+<img src = "https://user-images.githubusercontent.com/71149650/101125569-97d7b080-360a-11eb-9ded-bd78cf48bf12.png" />
 
 ## Метод опорных векторов (SVM) ##
  Метод опорных объектов в настоящее время считается одним из самых лучших методом классификации. Данный метод основывается на построении оптимальной разделяющей гиперплоскости. 
