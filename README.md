@@ -1262,3 +1262,70 @@ LogReg <- function(xl, eta = 0.5, lambda = 1/100) {
 + Неустойчивость к шуму в исходных данных. Объекты-выбросы являются опорными и существенно влияют на результат обучения
 + До сих пор не разработаны общие методы подбора ядер под конкретную задачу.
 + Подбор параметра *C* требует многократного решения задачи
+
+### ROC-кривая и AUC ###
+
+Кривая ошибок или **ROC-кривая** – графичекая характеристика качества бинарного классификатора, зависимость доли верных положительных классификаций **TRP** от доли ложных положительных классификаций **FRP** при варьировании порога решающего правила.
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\textup{FRP}(a,&space;X^{l})&space;=&space;\frac{\sum_{i&space;=&space;1}^{l}[a(x_i)&space;=&space;&plus;1][y_i=-1]}{\sum_{i&space;=1}^{l}[y_i=-1]}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\textup{FRP}(a,&space;X^{l})&space;=&space;\frac{\sum_{i&space;=&space;1}^{l}[a(x_i)&space;=&space;&plus;1][y_i=-1]}{\sum_{i&space;=1}^{l}[y_i=-1]}" title="\textup{FRP}(a, X^{l}) = \frac{\sum_{i = 1}^{l}[a(x_i) = +1][y_i=-1]}{\sum_{i =1}^{l}[y_i=-1]}" /></a>
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\textup{TRP}(a,&space;X^{l})&space;=&space;\frac{\sum_{i&space;=&space;1}^{l}[a(x_i)&space;=&space;&plus;1][y_i=&plus;1]}{\sum_{i&space;=1}^{l}[y_i=&plus;1]}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\textup{TRP}(a,&space;X^{l})&space;=&space;\frac{\sum_{i&space;=&space;1}^{l}[a(x_i)&space;=&space;&plus;1][y_i=&plus;1]}{\sum_{i&space;=1}^{l}[y_i=&plus;1]}" title="\textup{TRP}(a, X^{l}) = \frac{\sum_{i = 1}^{l}[a(x_i) = +1][y_i=+1]}{\sum_{i =1}^{l}[y_i=+1]}" /></a>
+
+Площадь под ROC-кривой - **AUC**. Чем больше значение AUC, тем лучше качество классификации. 
+
+``` r
+ROC <- function(xl) {
+  
+  svm <- ksvm(xl[,1:2], xl[,3], type = "C-svc", C = 12, kernel = "polydot", scaled = c())
+  w <- drop(t(coef(svm)[[1]]) %*% xl[SVindex(svm),1:2])
+  
+  Lp = dim(xl)[1] / 2
+  Lm = dim(xl)[1] / 2
+  
+  fx <- matrix(0, dim(xl)[1], 2)
+  
+  for(i in 1:dim(xl)[1]) {
+    fx[i, ] <- sum(w * xl[i,1:2])
+  }
+  
+  ordXl <- xl[order(fx[, 2], decreasing = TRUE), ]
+  
+  FTPR <- matrix(0, dim(xl)[1] + 1, 2)
+  
+  FTPR[1, ] <- c(0, 0)
+  AUC <- 0
+  
+  
+  for (i in 1:dim(xl)[1]) {
+    
+    if(ordXl[i, 3] == -1) {
+    
+      FTPR[i+1, 1] <- FTPR[i, 1] + (1 / Lm)
+      FTPR[i+1, 2] <- FTPR[i, 2]
+      
+      AUC <- AUC + (1 / Lm) * FTPR[i+1, 2]
+      
+    }
+    else{
+      
+      FTPR[i+1, 1] <- FTPR[i, 1]
+      FTPR[i+1, 2] <- FTPR[i, 2] + (1 / Lp)
+      
+    }
+
+  }
+  return(FTRP)
+}
+```
+#### Примеры ROC-кривых #### 
+
+***BAD***
+![bad](https://user-images.githubusercontent.com/71149650/101827237-166bab00-3b41-11eb-9ff4-97dfa3a78b30.png)
+
+***FINE***
+![fine](https://user-images.githubusercontent.com/71149650/101827310-34391000-3b41-11eb-9977-379f6e530b40.png)
+
+***GOOD***
+![good](https://user-images.githubusercontent.com/71149650/101827431-6185be00-3b41-11eb-9be5-52abc6dd5648.png)
+
+
