@@ -1223,8 +1223,10 @@ LogReg <- function(xl, eta = 0.5, lambda = 1/100) {
   
   Однако на практике линейно разделимы классы встречаются редко. 
   
-  #### Зависимость SVM от гиперпараметра C####
-  https://user-images.githubusercontent.com/71149650/101802469-83bb1400-3b20-11eb-8c62-42260cecdb70.png
+  #### Зависимость SVM от гиперпараметра C ####
+  
+  <img src = "https://user-images.githubusercontent.com/71149650/101802469-83bb1400-3b20-11eb-8c62-42260cecdb70.png" />
+
   
   ### Линейно неразделимая выборка ###
   
