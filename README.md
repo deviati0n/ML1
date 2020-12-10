@@ -1326,7 +1326,7 @@ ROC <- function(xl) {
   return(FTRP)
 }
 ```
-#### Примеры ROC-кривых #### 
+#### ROC-кривые и значения AUC #### 
 
 ***BAD***
 ![bad](https://user-images.githubusercontent.com/71149650/101827237-166bab00-3b41-11eb-9ff4-97dfa3a78b30.png)
