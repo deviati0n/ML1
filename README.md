@@ -1222,12 +1222,7 @@ LogReg <- function(xl, eta = 0.5, lambda = 1/100) {
   <a href="https://www.codecogs.com/eqnedit.php?latex=\begin{cases}&space;\left&space;\langle&space;w,w&space;\right&space;\rangle&space;\rightarrow&space;\min;&space;\\&space;y_{i}(\left&space;\langle&space;w,&space;x_{i}&space;\right&space;\rangle&space;-&space;w_{0})&space;\geqslant&space;1,&space;&&space;i&space;=&space;\overline{1,l}.&space;\end{cases}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\begin{cases}&space;\left&space;\langle&space;w,w&space;\right&space;\rangle&space;\rightarrow&space;\min;&space;\\&space;y_{i}(\left&space;\langle&space;w,&space;x_{i}&space;\right&space;\rangle&space;-&space;w_{0})&space;\geqslant&space;1,&space;&&space;i&space;=&space;\overline{1,l}.&space;\end{cases}" title="\begin{cases} \left \langle w,w \right \rangle \rightarrow \min; \\ y_{i}(\left \langle w, x_{i} \right \rangle - w_{0}) \geqslant 1, & i = \overline{1,l}. \end{cases}" /></a>
   
   Однако на практике линейно разделимы классы встречаются редко. 
-  
-  #### Зависимость SVM от гиперпараметра C ####
-  
-  <img src = "https://user-images.githubusercontent.com/71149650/101802469-83bb1400-3b20-11eb-8c62-42260cecdb70.png" />
-
-  
+   
   ### Линейно неразделимая выборка ###
   
    + Если выборка **линейно неразделима**, необходимо  позволить алгоритму допусакать ошибки на обучающих объектах, но при этом постараемся, чтобы их было меньше.  Для этого введем дополнительные переменные, которые будут характеризовать величину ошибки на объектах выборки. Получим обобщенную задачу:
@@ -1262,6 +1257,20 @@ LogReg <- function(xl, eta = 0.5, lambda = 1/100) {
 + Неустойчивость к шуму в исходных данных. Объекты-выбросы являются опорными и существенно влияют на результат обучения
 + До сих пор не разработаны общие методы подбора ядер под конкретную задачу.
 + Подбор параметра *C* требует многократного решения задачи
+
+#### Зависимость SVM от гиперпараметра C ####
+  
+<img src = "https://user-images.githubusercontent.com/71149650/101802469-83bb1400-3b20-11eb-8c62-42260cecdb70.png" />
+  
+#### Примеры работы SVM ####
+
+| ![](https://user-images.githubusercontent.com/71149650/101831948-b7f5fb00-3b47-11eb-8ab5-ed17cb2241b5.png) | ![](https://user-images.githubusercontent.com/71149650/101832532-a6f9b980-3b48-11eb-87ee-865817f4eb7e.png) |
+| - | - |
+| Линейно разделимая выборка (линейное ядро) | Линейно неразделимая выборка (линейное ядро) |
+
+| ![](https://user-images.githubusercontent.com/71149650/101833084-81b97b00-3b49-11eb-9a39-a693e5ecd5c3.png) |
+ | - |
+| Линейно неразделимая выборка (гауссовское ядро) | 
 
 ### ROC-кривая и AUC ###
 
