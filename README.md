@@ -1143,7 +1143,8 @@ HEBB <- function(xl, eta = 1, lambda = 1/100) {
 #### Программная реализация ####
 
 ``` r
-LogReg <- function(xl, eta = 1, lambda = 1/100) {
+LogReg <- function(xl, eta = 0.5, lambda = 1/100) {
+  
   count <- 0
   w <- c(1/2, -1/2, 1/2)
   
@@ -1160,77 +1161,54 @@ LogReg <- function(xl, eta = 1, lambda = 1/100) {
   
   ERR <- Q
   
-  # тело цикла 
   while (TRUE) {
+    
     count <- count + 1 
     
-    mars <- array(0, dim(xl)[1])
+    # Выбираем случайным образом индекс
+    randomI <- sample(1:dim(xl)[1], 1)
     
-    # отступы для всех объектов выборки
-    for (i in 1:dim(xl)[1]) {
-      
-      skPr <- sum(w * xl[i,1:(dim(xl)[2] - 1) ])
-      mars[i] <- skPr *  xl[i,dim(xl)[2]]
-      
-    }
+    skPr <- sum(w * xl[randomI,1:(dim(xl)[2] - 1) ])
+    mar <- skPr *  xl[randomI, dim(xl)[2]]
+  
+    #ошибка
+    err <- LossFunc(mar)
     
-    errI <- which(mars <= 0)
+    #обновление вектора весов 
+    w <- w + eta * xl[randomI,1:(dim(xl)[2] - 1) ] * xl[randomI, dim(xl)[2]] * SigmFunc(-skPr * xl[randomI, dim(xl)[2]])
     
-    if (length(errI) == 0 ) {
+    prevQ <- Q
+    
+    #оцениваем значение функционала 
+    Q <- (1 - lambda) * prevQ + lambda * err
+    ERR <- rbind(ERR, Q)
+    
+    #критерии для остановки
+    if ( abs(Q - prevQ)/(max(prevQ, Q)) < 0.00001 ) {
       break
     }
     
-    else{
-      
-      randomI <- sample(errI, 1)
-      
-      skPr <- sum(w * xl[randomI,1:(dim(xl)[2] - 1) ])
-      mar <- skPr *  xl[randomI, dim(xl)[2]]
-      
-      
-      #ошибка
-      err <- LossFunc(mar)
-      
-      eta <- 1 / count
-      
-      #обновление вектора весов 
-      w <- w + eta * xl[randomI,1:(dim(xl)[2] - 1) ] * xl[randomI,dim(xl)[2]] * SigmFunc(-mar)
-      
-      prevQ <- Q
-      
-      #оцениваем значение функционала 
-      Q <- (1 - lambda) * prevQ + lambda * err
-      ERR <- rbind(ERR, Q)
-      
-      #критерии для остановки
-      if ( abs(Q - prevQ) < 0.00001 ) {
-        break
-      }
-      
-      if (count > 10000) {
-        
-        break
-        
-      }
-      
+    if (count > 10000) {    
+      break  
     }
     
   } 
   
   return(w)  
 }
+
 ```
 
-<img src = "https://user-images.githubusercontent.com/71149650/101130523-aa56e780-3614-11eb-8075-1f1938f17535.png" />
+<img src = "https://user-images.githubusercontent.com/71149650/101767317-16de5480-3af5-11eb-9467-3baa531c7189.png" />
 
 **Апостериорную вероятность** принадлежности произвольного объект классу можно вычислить следующим образом:
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\textup{P}(y|x)&space;=&space;\sigma&space;(\left&space;\langle&space;w,&space;x&space;\right&space;\rangle&space;y)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\textup{P}(y|x)&space;=&space;\sigma&space;(\left&space;\langle&space;w,&space;x&space;\right&space;\rangle&space;y)" title="\textup{P}(y|x) = \sigma (\left \langle w, x \right \rangle y)" /></a>
 
-<img src = "https://user-images.githubusercontent.com/71149650/101129117-0e2be100-3612-11eb-994f-3e93a18a4a09.png" width = "700" />
+<img src = "https://user-images.githubusercontent.com/71149650/101768632-e39cc500-3af6-11eb-8b92-735b360d911a.png" width = "700" />
 
 #### Сравнение ADALINE, пр. Хэбба и логистической регрессии ####
-<img src = "https://user-images.githubusercontent.com/71149650/101130706-03268000-3615-11eb-887b-7d31f6b5f5ef.png" width = "1300"/>
+<img src = "https://user-images.githubusercontent.com/71149650/101768353-83a61e80-3af6-11eb-9c9c-b299a2217cc9.png" width = "1300"/>
 
 ## Метод опорных векторов (SVM) ##
  Метод опорных объектов в настоящее время считается одним из самых лучших методом классификации. Данный метод основывается на построении оптимальной разделяющей гиперплоскости. 
