@@ -679,23 +679,23 @@ LOO <- function(xl, alg = Parz){
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\mu&space;=(0,&space;0),&space;\Sigma&space;=&space;\begin{pmatrix}&space;1&space;&&space;0&space;\\&space;0&space;&&space;1&space;\end{pmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mu&space;=(0,&space;0),&space;\Sigma&space;=&space;\begin{pmatrix}&space;1&space;&&space;0&space;\\&space;0&space;&&space;1&space;\end{pmatrix}" title="\mu =(0, 0), \Sigma = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}" /></a>
 
-<img src="https://user-images.githubusercontent.com/71149650/97670904-4894e200-1a98-11eb-91c7-a22642836927.png" width="550"/>
+![image](https://user-images.githubusercontent.com/71149650/102524260-c8f3be80-40a9-11eb-9041-8e356350ee4a.png)
 
 2) **Диагональная** матрица ковариации соответствует независимым компонентам, но с различными дисперсиями. В этом случае линии уровня - **эллипсы с осями, параллельными координатным осям**.
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\mu&space;=(0,&space;0),&space;\Sigma&space;=&space;\begin{pmatrix}&space;3&space;&&space;0&space;\\&space;0&space;&&space;1&space;\end{pmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mu&space;=(0,&space;0),&space;\Sigma&space;=&space;\begin{pmatrix}&space;3&space;&&space;0&space;\\&space;0&space;&&space;1&space;\end{pmatrix}" title="\mu =(0, 0), \Sigma = \begin{pmatrix} 3 & 0 \\ 0 & 1 \end{pmatrix}" /></a>
 
-<img src="https://user-images.githubusercontent.com/71149650/97671019-80038e80-1a98-11eb-9701-666706bf9751.png" width="550"/>
+![image](https://user-images.githubusercontent.com/71149650/102524303-dc068e80-40a9-11eb-8964-391a8b0bcc5b.png)
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\mu&space;=(0,&space;0),&space;\Sigma&space;=&space;\begin{pmatrix}&space;1&space;&&space;0&space;\\&space;0&space;&&space;3&space;\end{pmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mu&space;=(0,&space;0),&space;\Sigma&space;=&space;\begin{pmatrix}&space;1&space;&&space;0&space;\\&space;0&space;&&space;3&space;\end{pmatrix}" title="\mu =(0, 0), \Sigma = \begin{pmatrix} 1 & 0 \\ 0 & 3 \end{pmatrix}" /></a>
 
-<img src="https://user-images.githubusercontent.com/71149650/97671044-90b40480-1a98-11eb-9f7e-067fec78c3c4.png" width="550"/>                                                                                                                            
+![image](https://user-images.githubusercontent.com/71149650/102524348-ed4f9b00-40a9-11eb-93ec-b063728c0ac5.png)                                                                                                                           
 
 3) Если признаки коррелированы, то матрица ковариации **не диагональна**. В этом случае линии уровня - **эллипсы, оси которых повернуты**.
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\mu&space;=(0,&space;0),&space;\Sigma&space;=&space;\begin{pmatrix}&space;4&space;&&space;2&space;\\&space;2&space;&&space;2&space;\end{pmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mu&space;=(0,&space;0),&space;\Sigma&space;=&space;\begin{pmatrix}&space;4&space;&&space;2&space;\\&space;2&space;&&space;2&space;\end{pmatrix}" title="\mu =(0, 0), \Sigma = \begin{pmatrix} 4 & 2 \\ 2 & 2 \end{pmatrix}" /></a>
 
-<img src="https://user-images.githubusercontent.com/71149650/97671130-b93bfe80-1a98-11eb-8d79-7459bd432cb0.png" width="550"/>  
+![image](https://user-images.githubusercontent.com/71149650/102524403-01939800-40aa-11eb-895e-6498bc3da23e.png) 
 
 [Оглавление](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BF%D0%BE%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0-%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B8)
 
@@ -765,7 +765,7 @@ naiveBC <- function(x, Py, sigma, mu, l = c(1, 1, 1)){
 | ![](https://user-images.githubusercontent.com/71149650/99666774-7e682d80-2a7c-11eb-990d-47253cbe2939.png) | ![](https://user-images.githubusercontent.com/71149650/99666870-9f308300-2a7c-11eb-97c2-fbd384dde914.png) |
 | λ = (1, 43, 1) | λ = (1, 1, 51) |
 
-
+[Оглавление](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BF%D0%BE%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0-%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B8)
 
 ## Подстановочный алгоритм (plug-in) ##
 
@@ -835,6 +835,8 @@ Plugin <- function(x, Py, mu1, sigma1, mu2, sigma2, l = c(3, 1)){
 
 <img src="https://user-images.githubusercontent.com/71149650/98244981-53acae00-1f81-11eb-8c2b-a0db240c4a85.png" width="550"/>  
 
+[Оглавление](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BF%D0%BE%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0-%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B8)
+
 ## Линейный дискриминант Фишера ###
 
 В основе данного метода лежит гипотеза, что матрицы ковариаций классов **равны**. Данная эвристика позволяет повысить устойчивость ковариационной матрицы и упростить алгоритим обучения. 
@@ -900,6 +902,7 @@ c <- ((mu1 + mu2) / 2) %*% w
  | ![](https://user-images.githubusercontent.com/71149650/99775944-2fc09f00-2b21-11eb-9745-ca342976478d.png) | ![](https://user-images.githubusercontent.com/71149650/99776019-46ff8c80-2b21-11eb-8212-1ff0aea19454.png) |
 | - | - |
 
+[Оглавление](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BF%D0%BE%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0-%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B8)
 
 # Линейные алгоритмы классификации #
 Линейные модели широко используются в машинном обучении благодаря их относительной простоте, в некоторых случаях хорошей интерпретируемости и наличию глубоко проработанных численных методов.
@@ -1022,6 +1025,9 @@ ADALINE <- function(xl, eta = 1, lambda = 1/100) {
 
 <img src = "https://user-images.githubusercontent.com/71149650/100421392-5a6aa480-3099-11eb-8ccc-04845cd22db5.png" />
 
+
+[Оглавление](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BF%D0%BE%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0-%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B8)
+
 ### Правило Хэбба ### 
 
 При классификации <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;a(x_{i})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;a(x_{i})" title="a(x_{i})" /></a> объекта <a href="https://www.codecogs.com/eqnedit.php?latex=\inline&space;x_{i}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\inline&space;x_{i}" title="x_{i}" /></a> возможны три случая:
@@ -1129,6 +1135,8 @@ HEBB <- function(xl, eta = 1, lambda = 1/100) {
 
 <img src = "https://user-images.githubusercontent.com/71149650/100420902-5c803380-3098-11eb-99dd-c770c7b5e262.png" />
 
+[Оглавление](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BF%D0%BE%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0-%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B8)
+
 ### Логистическая регрессия ###
 
 В логистической регресси для того, чтобы настроить вектор весов, решается задача минимизации эмпирического риска с функцией потерь специального вида:
@@ -1209,6 +1217,8 @@ LogReg <- function(xl, eta = 0.5, lambda = 1/100) {
 
 #### Сравнение ADALINE, пр. Хэбба и логистической регрессии ####
 <img src = "https://user-images.githubusercontent.com/71149650/101768353-83a61e80-3af6-11eb-9c9c-b299a2217cc9.png" width = "1300"/>
+
+[Оглавление](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BF%D0%BE%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0-%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B8)
 
 ## Метод опорных векторов (SVM) ##
  Метод опорных объектов в настоящее время считается одним из самых лучших методом классификации. Данный метод основывается на построении оптимальной разделяющей гиперплоскости. 
@@ -1336,5 +1346,7 @@ ROC <- function(xl) {
 
 ***GOOD***
 ![good](https://user-images.githubusercontent.com/71149650/101827431-6185be00-3b41-11eb-9be5-52abc6dd5648.png)
+
+[Оглавление](https://github.com/deviati0n/ML1/blob/master/README.md#%D0%BF%D0%BE%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0-%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B8)
 
 
